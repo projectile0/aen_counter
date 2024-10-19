@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\gui_files\menu.ui'
+# Form implementation generated from reading ui file '.\gui_files\addPeople.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -23,14 +23,14 @@ class Ui_MainWindow(object):
         self.menu.setContentsMargins(0, 0, 0, 0)
         self.menu.setSpacing(6)
         self.menu.setObjectName("menu")
-        self.btn_add = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
+        self.btn_addPeople = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.btn_add.sizePolicy().hasHeightForWidth())
-        self.btn_add.setSizePolicy(sizePolicy)
-        self.btn_add.setObjectName("btn_add")
-        self.menu.addWidget(self.btn_add)
+        sizePolicy.setHeightForWidth(self.btn_addPeople.sizePolicy().hasHeightForWidth())
+        self.btn_addPeople.setSizePolicy(sizePolicy)
+        self.btn_addPeople.setObjectName("btn_add")
+        self.menu.addWidget(self.btn_addPeople)
         self.btn_settings = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -50,5 +50,5 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.btn_add.setText(_translate("MainWindow", "Добавить спортсмена"))
+        self.btn_addPeople.setText(_translate("MainWindow", "Добавить спортсмена"))
         self.btn_settings.setText(_translate("MainWindow", "Настройки"))
