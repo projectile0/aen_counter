@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\gui_files\form.ui'
+# Form implementation generated from reading ui file './gui_files/raw_files/addPeople.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -9,14 +9,15 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_MainWindow(object):
-    def setupUi(self, MainWindow):
-        MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(328, 241)
-        self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
-        self.centralwidget.setObjectName("centralwidget")
-        self.formLayoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.formLayoutWidget.setGeometry(QtCore.QRect(30, 20, 231, 141))
+class Ui_Form(object):
+    def setupUi(self, Form):
+        Form.setObjectName("Form")
+        Form.resize(320, 254)
+        self.addButton = QtWidgets.QPushButton(parent=Form)
+        self.addButton.setGeometry(QtCore.QRect(170, 180, 81, 31))
+        self.addButton.setObjectName("addButton")
+        self.formLayoutWidget = QtWidgets.QWidget(parent=Form)
+        self.formLayoutWidget.setGeometry(QtCore.QRect(30, 30, 231, 141))
         self.formLayoutWidget.setObjectName("formLayoutWidget")
         self.formLayout = QtWidgets.QFormLayout(self.formLayoutWidget)
         self.formLayout.setContentsMargins(0, 0, 0, 0)
@@ -63,27 +64,24 @@ class Ui_MainWindow(object):
         self.edit_weight = QtWidgets.QLineEdit(parent=self.formLayoutWidget)
         self.edit_weight.setObjectName("edit_weight")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_weight)
-        self.addButton = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.addButton.setGeometry(QtCore.QRect(160, 170, 81, 31))
-        self.addButton.setObjectName("addButton")
-        MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
+        self.but_menu = QtWidgets.QPushButton(parent=Form)
+        self.but_menu.setGeometry(QtCore.QRect(10, 220, 71, 31))
+        self.but_menu.setObjectName("but_menu")
 
-        self.retranslateUi(MainWindow)
-        QtCore.QMetaObject.connectSlotsByName(MainWindow)
+        self.retranslateUi(Form)
+        QtCore.QMetaObject.connectSlotsByName(Form)
 
-    def retranslateUi(self, MainWindow):
+    def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.label_name.setText(_translate("MainWindow", "Имя"))
-        self.label_surname.setText(_translate("MainWindow", "Фамилия"))
-        self.label_date.setText(_translate("MainWindow", "Дата рождения"))
-        self.label_league.setText(_translate("MainWindow", "Лига"))
-        self.radioButton.setText(_translate("MainWindow", "A"))
-        self.radioButton_2.setText(_translate("MainWindow", "B"))
-        self.radioButton_3.setText(_translate("MainWindow", "C"))
-        self.radioButton_4.setText(_translate("MainWindow", "O"))
-        self.label_weight.setText(_translate("MainWindow", "Вес ( в кг)"))
-        self.addButton.setText(_translate("MainWindow", "Добавить"))
+        Form.setWindowTitle(_translate("Form", "Form"))
+        self.addButton.setText(_translate("Form", "Добавить"))
+        self.label_name.setText(_translate("Form", "Имя"))
+        self.label_surname.setText(_translate("Form", "Фамилия"))
+        self.label_date.setText(_translate("Form", "Дата рождения"))
+        self.label_league.setText(_translate("Form", "Лига"))
+        self.radioButton.setText(_translate("Form", "A"))
+        self.radioButton_2.setText(_translate("Form", "B"))
+        self.radioButton_3.setText(_translate("Form", "C"))
+        self.radioButton_4.setText(_translate("Form", "O"))
+        self.label_weight.setText(_translate("Form", "Вес ( в кг)"))
+        self.but_menu.setText(_translate("Form", "Меню"))
