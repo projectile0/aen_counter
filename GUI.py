@@ -1,11 +1,11 @@
 import sys
 
-from PyQt6 import QtCore, QtWidgets
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
 
+from utilities import enable_high_resolution
 
 class Menu(QMainWindow, Ui_menu):
     def __init__(self):
@@ -31,12 +31,7 @@ class AddPeople(QWidget, Ui_addPeople):
 
 
 def startGUI():
-    if hasattr(QtCore.Qt, 'AA_EnableHighDpiScaling'):
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
-
-    if hasattr(QtCore.Qt, 'AA_UseHighDpiPixmaps'):
-        QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_UseHighDpiPixmaps, True)
-
+    enable_high_resolution()
     app = QApplication(sys.argv)
     mainWindow = Menu()
     mainWindow.show()

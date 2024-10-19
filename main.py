@@ -1,5 +1,5 @@
 from GUI import *
-from show_errors import show_errors
+from utilities import show_errors
 def main():
     startGUI()
 
