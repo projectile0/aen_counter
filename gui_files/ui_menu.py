@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file '.\gui_files\addPeople.ui'
+# Form implementation generated from reading ui file './gui_files/raw_files/menu.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -13,32 +13,79 @@ class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(301, 300)
+        MainWindow.setStyleSheet("background-color: rgb(31, 36, 46);\n"
+"color: white;\n"
+"font-size: 12pt\n"
+"")
         self.centralwidget = QtWidgets.QWidget(parent=MainWindow)
         self.centralwidget.setObjectName("centralwidget")
-        self.verticalLayoutWidget = QtWidgets.QWidget(parent=self.centralwidget)
-        self.verticalLayoutWidget.setGeometry(QtCore.QRect(20, 20, 261, 91))
-        self.verticalLayoutWidget.setObjectName("verticalLayoutWidget")
-        self.menu = QtWidgets.QVBoxLayout(self.verticalLayoutWidget)
-        self.menu.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.menu.setContentsMargins(0, 0, 0, 0)
-        self.menu.setSpacing(6)
-        self.menu.setObjectName("menu")
-        self.btn_addPeople = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
+        self.horizontalLayout = QtWidgets.QHBoxLayout(self.centralwidget)
+        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout = QtWidgets.QVBoxLayout()
+        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
+        self.verticalLayout.setContentsMargins(15, 20, 15, 10)
+        self.verticalLayout.setSpacing(12)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.btn_category = QtWidgets.QPushButton(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_category.sizePolicy().hasHeightForWidth())
+        self.btn_category.setSizePolicy(sizePolicy)
+        self.btn_category.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.btn_category.setObjectName("btn_category")
+        self.verticalLayout.addWidget(self.btn_category)
+        self.btn_addPeople = QtWidgets.QPushButton(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btn_addPeople.sizePolicy().hasHeightForWidth())
         self.btn_addPeople.setSizePolicy(sizePolicy)
-        self.btn_addPeople.setObjectName("btn_add")
-        self.menu.addWidget(self.btn_addPeople)
-        self.btn_settings = QtWidgets.QPushButton(parent=self.verticalLayoutWidget)
+        self.btn_addPeople.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.btn_addPeople.setObjectName("btn_addPeople")
+        self.verticalLayout.addWidget(self.btn_addPeople)
+        self.btn_settings = QtWidgets.QPushButton(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.btn_settings.sizePolicy().hasHeightForWidth())
         self.btn_settings.setSizePolicy(sizePolicy)
+        self.btn_settings.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
         self.btn_settings.setObjectName("btn_settings")
-        self.menu.addWidget(self.btn_settings)
+        self.verticalLayout.addWidget(self.btn_settings)
+        self.horizontalLayout.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
         self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
         self.statusbar.setObjectName("statusbar")
@@ -50,5 +97,6 @@ class Ui_MainWindow(object):
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.btn_category.setText(_translate("MainWindow", "Номинации"))
         self.btn_addPeople.setText(_translate("MainWindow", "Добавить спортсмена"))
         self.btn_settings.setText(_translate("MainWindow", "Настройки"))
