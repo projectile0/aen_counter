@@ -24,7 +24,6 @@ class Menu(QMainWindow, Ui_menu):
         for i in self.wins:
             i.close()
 
-
     def open_adder(self):
         self.win_addPeople.show()
         self.close()
