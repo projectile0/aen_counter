@@ -12,17 +12,16 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(351, 326)
+        Form.resize(351, 370)
         Form.setStyleSheet("background-color: rgb(31, 36, 46);\n"
 "color: white;\n"
 "font-size: 13pt\n"
 "")
-        self.verticalLayout_2 = QtWidgets.QVBoxLayout(Form)
-        self.verticalLayout_2.setObjectName("verticalLayout_2")
-        self.verticalLayout = QtWidgets.QVBoxLayout()
-        self.verticalLayout.setSpacing(15)
+        self.centralwidget = QtWidgets.QWidget(parent=Form)
+        self.centralwidget.setObjectName("centralwidget")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.but_menu = QtWidgets.QPushButton(parent=Form)
+        self.but_menu = QtWidgets.QPushButton(parent=self.centralwidget)
         self.but_menu.setMinimumSize(QtCore.QSize(0, 30))
         self.but_menu.setMaximumSize(QtCore.QSize(100, 16777215))
         self.but_menu.setStyleSheet("QPushButton{\n"
@@ -38,7 +37,7 @@ class Ui_Form(object):
 "}")
         self.but_menu.setObjectName("but_menu")
         self.verticalLayout.addWidget(self.but_menu)
-        self.Form_2 = QtWidgets.QFrame(parent=Form)
+        self.Form_2 = QtWidgets.QFrame(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -167,7 +166,7 @@ class Ui_Form(object):
         self.edit_league.addWidget(self.radioButton_4)
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.league)
         self.verticalLayout.addWidget(self.Form_2)
-        self.addButton = QtWidgets.QPushButton(parent=Form)
+        self.addButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.addButton.setMinimumSize(QtCore.QSize(0, 40))
         self.addButton.setMaximumSize(QtCore.QSize(150, 16777215))
         self.addButton.setStyleSheet("QPushButton{\n"
@@ -183,14 +182,17 @@ class Ui_Form(object):
 "}")
         self.addButton.setObjectName("addButton")
         self.verticalLayout.addWidget(self.addButton)
-        self.verticalLayout_2.addLayout(self.verticalLayout)
+        Form.setCentralWidget(self.centralwidget)
+        self.statusbar = QtWidgets.QStatusBar(parent=Form)
+        self.statusbar.setObjectName("statusbar")
+        Form.setStatusBar(self.statusbar)
 
         self.retranslateUi(Form)
         QtCore.QMetaObject.connectSlotsByName(Form)
 
     def retranslateUi(self, Form):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
+        Form.setWindowTitle(_translate("Form", "MainWindow"))
         self.but_menu.setText(_translate("Form", "Меню"))
         self.label_name.setText(_translate("Form", "Имя"))
         self.label_surname.setText(_translate("Form", "Фамилия"))

@@ -14,9 +14,9 @@ class Menu(QMainWindow, Ui_menu):
         self.setupUi(self)
         self.setWindowTitle('aen_counter')
         self.btn_addPeople.clicked.connect(self.open_adder)
-        self.win_addPeople = AddPeople(self)
+        self.win_addPeople = WidgetAddPeople(self)
         self.btn_settings.clicked.connect(self.open_settings)
-        self.win_settings = Settings(self)
+        self.win_settings = WidgetSettings(self)
         self.wins = (self.win_settings, self.win_addPeople)
 
     def show_menu(self):
@@ -33,15 +33,30 @@ class Menu(QMainWindow, Ui_menu):
         self.close()
 
 
-class AddPeople(QWidget, Ui_addPeople):
+class WidgetAddPeople(QMainWindow, Ui_addPeople):
     def __init__(self, parent: Menu):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('Добавить спортсмена')
         self.but_menu.clicked.connect(parent.show_menu)
+        self.addButton.clicked.connect(self.press_button)
+
+    def press_button(self):
+        try:
+            name, surname = self.edit_surname.text().strip().capitalize(), self.edit_name.text().strip().capitalize()
+            if not (name and surname):
+                raise ValueError('Имя и фамилия не могут быть пустыми')
+            if not (name.isalpha() and surname.isalpha()):
+                raise ValueError('Имя и фамилия могут содержать только буквы')
+            fullname = name + ' ' + surname
+            print(fullname)
+        except ValueError as ve:
+            self.statusbar.showMessage(ve.__str__())
+        born = self.edit_birthday.text()
+        print(born)
 
 
-class Settings(QWidget, Ui_settings):
+class WidgetSettings(QWidget, Ui_settings):
     def __init__(self, parent: Menu):
         super().__init__()
         self.setupUi(self)
