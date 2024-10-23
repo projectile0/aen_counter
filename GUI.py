@@ -66,9 +66,8 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
                 raise ValueError('Вес не может быть пустым')
             if not weight.replace('.', '', 1).isdigit():
                 raise ValueError('Вес может содержать только дробное число')
-            self.statusbar.showMessage('')
+            self.statusbar.showMessage('Успешно')
             fullname = name + ' ' + surname
-            born = self.edit_birthday.text()
             return People(fullname, birthday, float(weight))
 
         except ValueError as ve:
@@ -84,6 +83,6 @@ class WidgetSettings(QWidget, Ui_settings):
 def startGUI():
     enable_high_resolution()
     app = QApplication(sys.argv)
-    mainWindow = Menu()
-    mainWindow.show()
+    win_main = Menu()
+    win_main.show()
     sys.exit(app.exec())
