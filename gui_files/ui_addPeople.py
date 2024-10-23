@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './gui_files/raw_files/addPeople.ui'
+# Form implementation generated from reading ui file 'gui_files/raw_files/addPeople.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(351, 370)
+        Form.resize(394, 370)
         Form.setStyleSheet("background-color: rgb(31, 36, 46);\n"
 "color: white;\n"
 "font-size: 13pt\n"
@@ -102,13 +102,16 @@ class Ui_Form(object):
 "border-radius: 3px;\n"
 "padding-left: 5px;\n"
 "")
+        self.edit_birthday.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.edit_birthday.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.NoButtons)
+        self.edit_birthday.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(1900, 1, 1), QtCore.QTime(0, 0, 0)))
         self.edit_birthday.setObjectName("edit_birthday")
         self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_birthday)
         self.label_league = QtWidgets.QLabel(parent=self.Form_2)
         self.label_league.setObjectName("label_league")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_league)
         self.label_weight = QtWidgets.QLabel(parent=self.Form_2)
+        self.label_weight.setMinimumSize(QtCore.QSize(0, 0))
         self.label_weight.setObjectName("label_weight")
         self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_weight)
         self.edit_weight = QtWidgets.QLineEdit(parent=self.Form_2)
@@ -135,35 +138,35 @@ class Ui_Form(object):
         self.edit_league.setContentsMargins(0, 0, 0, 0)
         self.edit_league.setSpacing(0)
         self.edit_league.setObjectName("edit_league")
-        self.radioButton = QtWidgets.QRadioButton(parent=self.league)
-        self.radioButton.setStyleSheet("background-color: None;\n"
+        self.league_a = QtWidgets.QRadioButton(parent=self.league)
+        self.league_a.setStyleSheet("background-color: None;\n"
 "border-color: None;\n"
 "")
-        self.radioButton.setObjectName("radioButton")
-        self.edit_league.addWidget(self.radioButton)
-        self.radioButton_2 = QtWidgets.QRadioButton(parent=self.league)
-        self.radioButton_2.setStyleSheet("background-color: None;\n"
+        self.league_a.setObjectName("league_a")
+        self.edit_league.addWidget(self.league_a)
+        self.league_b = QtWidgets.QRadioButton(parent=self.league)
+        self.league_b.setStyleSheet("background-color: None;\n"
 "border-color: None;\n"
 "")
-        self.radioButton_2.setObjectName("radioButton_2")
-        self.edit_league.addWidget(self.radioButton_2)
-        self.radioButton_3 = QtWidgets.QRadioButton(parent=self.league)
-        self.radioButton_3.setStyleSheet("background-color: None;\n"
+        self.league_b.setObjectName("league_b")
+        self.edit_league.addWidget(self.league_b)
+        self.league_c = QtWidgets.QRadioButton(parent=self.league)
+        self.league_c.setStyleSheet("background-color: None;\n"
 "border-color: None;\n"
 "")
-        self.radioButton_3.setObjectName("radioButton_3")
-        self.edit_league.addWidget(self.radioButton_3)
-        self.radioButton_4 = QtWidgets.QRadioButton(parent=self.league)
+        self.league_c.setObjectName("league_c")
+        self.edit_league.addWidget(self.league_c)
+        self.league_o = QtWidgets.QRadioButton(parent=self.league)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.radioButton_4.sizePolicy().hasHeightForWidth())
-        self.radioButton_4.setSizePolicy(sizePolicy)
-        self.radioButton_4.setStyleSheet("background-color: None;\n"
+        sizePolicy.setHeightForWidth(self.league_o.sizePolicy().hasHeightForWidth())
+        self.league_o.setSizePolicy(sizePolicy)
+        self.league_o.setStyleSheet("background-color: None;\n"
 "border-color: None;\n"
 "")
-        self.radioButton_4.setObjectName("radioButton_4")
-        self.edit_league.addWidget(self.radioButton_4)
+        self.league_o.setObjectName("league_o")
+        self.edit_league.addWidget(self.league_o)
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.league)
         self.verticalLayout.addWidget(self.Form_2)
         self.addButton = QtWidgets.QPushButton(parent=self.centralwidget)
@@ -197,10 +200,10 @@ class Ui_Form(object):
         self.label_name.setText(_translate("Form", "Имя"))
         self.label_surname.setText(_translate("Form", "Фамилия"))
         self.label_league.setText(_translate("Form", "Лига"))
-        self.label_weight.setText(_translate("Form", "Вес (в кг)"))
+        self.label_weight.setText(_translate("Form", "Вес (через точку)"))
         self.label_date.setText(_translate("Form", "Дата рождения"))
-        self.radioButton.setText(_translate("Form", "A"))
-        self.radioButton_2.setText(_translate("Form", "B"))
-        self.radioButton_3.setText(_translate("Form", "C"))
-        self.radioButton_4.setText(_translate("Form", "O"))
+        self.league_a.setText(_translate("Form", "A"))
+        self.league_b.setText(_translate("Form", "B"))
+        self.league_c.setText(_translate("Form", "C"))
+        self.league_o.setText(_translate("Form", "O"))
         self.addButton.setText(_translate("Form", "Добавить"))
