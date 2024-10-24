@@ -2,6 +2,7 @@ import sys
 from datetime import date
 
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt6 import QtGui
 
 from People import People
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
@@ -17,13 +18,17 @@ class Menu(QMainWindow, Ui_menu):
         self.setWindowTitle('aen_counter')
         self.btn_addPeople.clicked.connect(self.open_adder)
         self.win_addPeople = WidgetAddPeople(self)
+        self.win_addPeople.setFixedSize(self.win_addPeople.size())
         self.btn_settings.clicked.connect(self.open_settings)
         self.win_settings = WidgetSettings(self)
-        self.wins = (self.win_settings, self.win_addPeople)
+        self.wins = (self, self.win_settings, self.win_addPeople)
+        for i in self.wins:
+            i.setFixedSize(i.size())
+            i.setWindowIcon(QtGui.QIcon('./res/icon.png'))
 
     def show_menu(self):
         self.show()
-        for i in self.wins:
+        for i in self.wins[1:]:
             i.close()
 
     def open_adder(self):
@@ -49,8 +54,8 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
 
     def get_people(self):
         try:
-            name = self.edit_surname.text().strip().capitalize()
-            surname = self.edit_name.text().strip().capitalize()
+            name = self.edit_name.text().strip().capitalize()
+            surname = self.edit_surname.text().strip().capitalize()
             birthday = self.edit_birthday.text()
             weight = self.edit_weight.text()
 
@@ -66,7 +71,7 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
                 raise ValueError('Вес не может быть пустым')
             if not weight.replace('.', '', 1).isdigit():
                 raise ValueError('Вес может содержать только дробное число')
-            self.statusbar.showMessage('Успешно')
+            self.statusbar.showMessage(f'{surname} успешно добавлен')
             fullname = name + ' ' + surname
             return People(fullname, birthday, float(weight))
 
