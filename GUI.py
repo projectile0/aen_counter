@@ -3,11 +3,12 @@ import sys
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
+from People import get_people
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
 from gui_files.ui_settings import Ui_Settings as Ui_settings
 from utilities import enable_high_resolution
-from People import get_people
+
 
 class Menu(QMainWindow, Ui_menu):
     def __init__(self):
