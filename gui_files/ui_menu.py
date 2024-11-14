@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './gui_files/raw_files/menu.ui'
+# Form implementation generated from reading ui file 'gui_files/raw_files/menu.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -12,7 +12,7 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(301, 300)
+        MainWindow.resize(302, 300)
         MainWindow.setStyleSheet("background-color: rgb(31, 36, 46);\n"
 "color: white;\n"
 "font-size: 12pt\n"
@@ -25,9 +25,28 @@ class Ui_MainWindow(object):
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.verticalLayout = QtWidgets.QVBoxLayout()
         self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
-        self.verticalLayout.setContentsMargins(15, 20, 15, 10)
+        self.verticalLayout.setContentsMargins(15, 20, 15, 15)
         self.verticalLayout.setSpacing(12)
         self.verticalLayout.setObjectName("verticalLayout")
+        self.btn_athletes = QtWidgets.QPushButton(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.btn_athletes.sizePolicy().hasHeightForWidth())
+        self.btn_athletes.setSizePolicy(sizePolicy)
+        self.btn_athletes.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.btn_athletes.setObjectName("btn_athletes")
+        self.verticalLayout.addWidget(self.btn_athletes)
         self.btn_category = QtWidgets.QPushButton(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
@@ -87,16 +106,14 @@ class Ui_MainWindow(object):
         self.verticalLayout.addWidget(self.btn_settings)
         self.horizontalLayout.addLayout(self.verticalLayout)
         MainWindow.setCentralWidget(self.centralwidget)
-        self.statusbar = QtWidgets.QStatusBar(parent=MainWindow)
-        self.statusbar.setObjectName("statusbar")
-        MainWindow.setStatusBar(self.statusbar)
 
         self.retranslateUi(MainWindow)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Меню"))
+        self.btn_athletes.setText(_translate("MainWindow", "Список спортсменов"))
         self.btn_category.setText(_translate("MainWindow", "Номинации"))
         self.btn_addPeople.setText(_translate("MainWindow", "Добавить спортсмена"))
         self.btn_settings.setText(_translate("MainWindow", "Настройки"))

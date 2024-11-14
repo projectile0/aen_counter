@@ -5,6 +5,7 @@ from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
 from People import get_people
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
+from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
 from gui_files.ui_settings import Ui_Settings as Ui_settings
 from utilities import enable_high_resolution
@@ -20,7 +21,9 @@ class Menu(QMainWindow, Ui_menu):
         self.win_addPeople.setFixedSize(self.win_addPeople.size())
         self.btn_settings.clicked.connect(self.open_settings)
         self.win_settings = WidgetSettings(self)
-        self.wins = (self, self.win_settings, self.win_addPeople)
+        self.win_athletesArr = WidgetAthletes(self)
+        self.btn_athletes.clicked.connect(self.open_athletesArr)
+        self.wins = (self, self.win_settings, self.win_addPeople, self.win_athletesArr)
         for i in self.wins:
             i.setFixedSize(i.size())
             i.setWindowIcon(QtGui.QIcon('./res/icon.png'))
@@ -36,6 +39,10 @@ class Menu(QMainWindow, Ui_menu):
 
     def open_settings(self):
         self.win_settings.show()
+        self.close()
+
+    def open_athletesArr(self):
+        self.win_athletesArr.show()
         self.close()
 
 
@@ -56,6 +63,13 @@ class WidgetSettings(QWidget, Ui_settings):
     def __init__(self, parent: Menu):
         super().__init__()
         self.setupUi(self)
+
+
+class WidgetAthletes(QMainWindow, Ui_athletes):
+    def __init__(self, parent: Menu):
+        super().__init__()
+        self.setupUi(self)
+        self.but_menu.clicked.connect(parent.show_menu)
 
 
 def startGUI():
