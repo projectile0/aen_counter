@@ -118,13 +118,13 @@ class Ui_MainWindow(object):
         self.getSurname_LineEdit.setObjectName("getSurname_LineEdit")
         self.formLayout_3.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getSurname_LineEdit)
         self.horizontalLayout.addLayout(self.formLayout_3)
-        self.pushButton = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.foundButton = QtWidgets.QPushButton(parent=self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.pushButton.sizePolicy().hasHeightForWidth())
-        self.pushButton.setSizePolicy(sizePolicy)
-        self.pushButton.setStyleSheet("QPushButton{\n"
+        sizePolicy.setHeightForWidth(self.foundButton.sizePolicy().hasHeightForWidth())
+        self.foundButton.setSizePolicy(sizePolicy)
+        self.foundButton.setStyleSheet("QPushButton{\n"
 "background-color: rgba(255, 255, 255, 30);\n"
 "border: 1px solid rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
@@ -135,8 +135,8 @@ class Ui_MainWindow(object):
 "QPushButton:pressed{\n"
 "background-color: rgba(255, 255, 255, 70);\n"
 "}")
-        self.pushButton.setObjectName("pushButton")
-        self.horizontalLayout.addWidget(self.pushButton)
+        self.foundButton.setObjectName("foundButton")
+        self.horizontalLayout.addWidget(self.foundButton)
         self.verticalLayout.addLayout(self.horizontalLayout)
         self.tableWidget = QtWidgets.QTableWidget(parent=self.centralwidget)
         self.tableWidget.setStyleSheet("background-color: rgba(255, 255, 255, 10);\n"
@@ -171,4 +171,4 @@ class Ui_MainWindow(object):
         self.getLeague_ComboBox.setItemText(3, _translate("MainWindow", "C"))
         self.getLeague_ComboBox.setItemText(4, _translate("MainWindow", "O"))
         self.getSurname_Label.setText(_translate("MainWindow", "Фамилия"))
-        self.pushButton.setText(_translate("MainWindow", "Найти"))
+        self.foundButton.setText(_translate("MainWindow", "Найти"))

@@ -4,6 +4,7 @@ from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
 from People import get_people
+from database import db_connection, get_filterArr
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
@@ -67,11 +68,18 @@ class WidgetSettings(QWidget, Ui_settings):
 
 class WidgetAthletes(QMainWindow, Ui_athletes):
     def __init__(self, parent: Menu):
+        self.con = db_connection()
         super().__init__()
         self.setupUi(self)
         self.but_menu.clicked.connect(parent.show_menu)
-        self.
+        self.foundButton.clicked.connect(self.press_button)
+
     def press_button(self):
+        weight = self.getWeight_Combo.currentText()
+        year = self.getYear_SpinBox.value()
+        league = self.getLeague_ComboBox.currentText()
+        surname = self.getSurname_LineEdit.text()
+        print(get_filterArr(self.con, weight, year, league, surname))
 
 
 def startGUI():
