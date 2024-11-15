@@ -70,6 +70,8 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         super().__init__()
         self.setupUi(self)
         self.but_menu.clicked.connect(parent.show_menu)
+        self.
+    def press_button(self):
 
 
 def startGUI():
