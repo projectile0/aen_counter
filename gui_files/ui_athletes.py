@@ -50,10 +50,10 @@ class Ui_MainWindow(object):
         self.getWeight_Label.setObjectName("getWeight_Label")
         self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getWeight_Label)
         self.getWeight_Combo = QtWidgets.QComboBox(parent=self.centralwidget)
+        self.getWeight_Combo.setMinimumSize(QtCore.QSize(0, 0))
         self.getWeight_Combo.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
-"padding-left: 5px;\n"
 "")
         self.getWeight_Combo.setObjectName("getWeight_Combo")
         self.getWeight_Combo.addItem("")
@@ -66,12 +66,16 @@ class Ui_MainWindow(object):
         self.getYear_Label.setObjectName("getYear_Label")
         self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getYear_Label)
         self.getYear_SpinBox = QtWidgets.QSpinBox(parent=self.centralwidget)
-        self.getYear_SpinBox.setMinimumSize(QtCore.QSize(80, 0))
+        self.getYear_SpinBox.setMinimumSize(QtCore.QSize(60, 9))
+        self.getYear_SpinBox.setMaximumSize(QtCore.QSize(16777215, 16777215))
+        self.getYear_SpinBox.setContextMenuPolicy(QtCore.Qt.ContextMenuPolicy.DefaultContextMenu)
         self.getYear_SpinBox.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
-"padding-left: 5px;\n"
+"\n"
 "")
+        self.getYear_SpinBox.setAlignment(QtCore.Qt.AlignmentFlag.AlignJustify|QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.getYear_SpinBox.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.getYear_SpinBox.setMinimum(1900)
         self.getYear_SpinBox.setMaximum(2200)
         self.getYear_SpinBox.setProperty("value", 2015)
