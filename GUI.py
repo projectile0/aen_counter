@@ -3,17 +3,21 @@ import sys
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
-from person import get_person
-from database import db_connection, get_filterArr
+from database import db_connection, get_filterArr, add_person
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
 from gui_files.ui_settings import Ui_Settings as Ui_settings
+from person import get_person
 from utilities import enable_high_resolution
 
 
 class Menu(QMainWindow, Ui_menu):
     def __init__(self):
+        self.db_con = db_connection()
+        cur = self.db_con.cursor()
+        cur.execute('''INSERT INTO athletes(name, weight, birthday, league) VALUES ('asdfsadfadsf', 123,
+                '13.07.2006', (SELECT id FROM leagues WHERE league = 'A'))''')
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('aen_counter')
@@ -49,6 +53,7 @@ class Menu(QMainWindow, Ui_menu):
 
 class WidgetAddPeople(QMainWindow, Ui_addPeople):
     def __init__(self, parent: Menu):
+        self.parent = parent
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('Добавить спортсмена')
@@ -59,7 +64,8 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
         try:
             somebody = get_person(self)
             print(somebody.fullname, somebody.birthday, somebody.weight, somebody.league)
-
+            add_person(self.parent.db_con, somebody)
+            self.parent.db_con.commit()
         except Exception:
             pass
 
@@ -72,7 +78,7 @@ class WidgetSettings(QWidget, Ui_settings):
 
 class WidgetAthletes(QMainWindow, Ui_athletes):
     def __init__(self, parent: Menu):
-        self.con = db_connection()
+        self.parent = parent
         super().__init__()
         self.setupUi(self)
         self.but_menu.clicked.connect(parent.show_menu)
@@ -83,7 +89,7 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         year = self.getYear_SpinBox.value()
         league = self.getLeague_ComboBox.currentText()
         surname = self.getSurname_LineEdit.text()
-        print(get_filterArr(self.con, weight, year, league, surname))
+        print(get_filterArr(self.parent.db_con, weight, year, league, surname))
 
 
 def startGUI():
@@ -91,4 +97,6 @@ def startGUI():
     app = QApplication(sys.argv)
     win_main = Menu()
     win_main.show()
+
     sys.exit(app.exec())
+    win_main.db_con.close()
