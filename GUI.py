@@ -3,7 +3,7 @@ import sys
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
-from People import get_people
+from person import get_person
 from database import db_connection, get_filterArr
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
@@ -56,8 +56,12 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
         self.addButton.clicked.connect(self.press_button)
 
     def press_button(self):
-        somebody = get_people(self)
-        print(somebody.fullname, somebody.birthday, somebody.weight)
+        try:
+            somebody = get_person(self)
+            print(somebody.fullname, somebody.birthday, somebody.weight, somebody.league)
+
+        except Exception:
+            pass
 
 
 class WidgetSettings(QWidget, Ui_settings):
