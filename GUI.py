@@ -15,9 +15,6 @@ from utilities import enable_high_resolution
 class Menu(QMainWindow, Ui_menu):
     def __init__(self):
         self.db_con = db_connection()
-        cur = self.db_con.cursor()
-        cur.execute('''INSERT INTO athletes(name, weight, birthday, league) VALUES ('asdfsadfadsf', 123,
-                '13.07.2006', (SELECT id FROM leagues WHERE league = 'A'))''')
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('aen_counter')
