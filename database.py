@@ -21,3 +21,6 @@ def add_person(con, person: Person):
         con.commit()
     except Exception as e:
         print(e)
+
+def clear_athletes(con):
+    cur = con.cursor()
