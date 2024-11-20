@@ -60,7 +60,6 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
     def press_button(self):
         try:
             somebody = get_person(self)
-            print(somebody.fullname, somebody.birthday, somebody.weight, somebody.league)
             add_person(self.parent.db_con, somebody)
             self.parent.db_con.commit()
         except Exception:

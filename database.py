@@ -15,11 +15,9 @@ def get_filterArr(con, weight=None, year=None, league=None, surname=None):
 def add_person(con, person: Person):
     try:
         cur = con.cursor()
-        print(type(person.birthday))
         req = f'''INSERT INTO athletes(name, weight, birthday, league) VALUES ('{person.fullname}', {person.weight},
                     '{person.birthday}', (SELECT id FROM leagues WHERE league = '{person.league}'))'''
         cur.execute(req)
         con.commit()
-        print('yes')
     except Exception as e:
         print(e)
