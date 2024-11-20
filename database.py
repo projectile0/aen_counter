@@ -22,5 +22,10 @@ def add_person(con, person: Person):
     except Exception as e:
         print(e)
 
-def clear_athletes(con):
-    cur = con.cursor()
+def clear_database(parent):
+    parent.db_con.close()
+    with open('database.sqlite', 'w'):
+        parent.db_con = sqlite3.connect('database.sqlite')
+    parent.db_con.executescript(open('sql/create_athletes.sql').read())
+    parent.db_con.executescript(open('sql/create_leagues.sql').read())
+    parent.db_con.executescript(open('sql/add_standart_leagues.sql').read())

@@ -3,7 +3,7 @@ import sys
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
 
-from database import db_connection, get_filterArr, add_person
+from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
@@ -93,6 +93,4 @@ def startGUI():
     app = QApplication(sys.argv)
     win_main = Menu()
     win_main.show()
-
     sys.exit(app.exec())
-    win_main.db_con.close()
