@@ -69,6 +69,8 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
 class WidgetSettings(QWidget, Ui_settings):
     def __init__(self, parent: Menu):
         super().__init__()
+        self.parent = parent
+        self.but_menu.clicked.connect(parent.show_menu)
         self.setupUi(self)
 
 
