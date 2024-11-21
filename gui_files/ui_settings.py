@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file './gui_files/raw_files/settings.ui'
+# Form implementation generated from reading ui file '.\gui_files\raw_files\settings.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
@@ -17,10 +17,111 @@ class Ui_Settings(object):
 "color: white;\n"
 "font-size: 12pt\n"
 "")
+        self.verticalLayout = QtWidgets.QVBoxLayout(Settings)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.but_menu = QtWidgets.QPushButton(parent=Settings)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.but_menu.sizePolicy().hasHeightForWidth())
+        self.but_menu.setSizePolicy(sizePolicy)
+        self.but_menu.setMinimumSize(QtCore.QSize(0, 30))
+        self.but_menu.setMaximumSize(QtCore.QSize(100, 30))
+        self.but_menu.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.but_menu.setObjectName("but_menu")
+        self.verticalLayout.addWidget(self.but_menu)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.verticalLayout_3 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_3.setObjectName("verticalLayout_3")
+        self.label_2 = QtWidgets.QLabel(parent=Settings)
+        self.label_2.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label_2.setStyleSheet("")
+        self.label_2.setObjectName("label_2")
+        self.verticalLayout_3.addWidget(self.label_2)
+        self.verticalLayout_5 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_5.setObjectName("verticalLayout_5")
+        self.verticalLayout_3.addLayout(self.verticalLayout_5)
+        self.horizontalLayout.addLayout(self.verticalLayout_3)
+        self.verticalLayout_2 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_2.setObjectName("verticalLayout_2")
+        self.label = QtWidgets.QLabel(parent=Settings)
+        self.label.setMaximumSize(QtCore.QSize(16777215, 20))
+        self.label.setStyleSheet("")
+        self.label.setObjectName("label")
+        self.verticalLayout_2.addWidget(self.label)
+        self.clear_database = QtWidgets.QPushButton(parent=Settings)
+        self.clear_database.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.clear_database.setObjectName("clear_database")
+        self.verticalLayout_2.addWidget(self.clear_database)
+        self.verticalLayout_4 = QtWidgets.QVBoxLayout()
+        self.verticalLayout_4.setObjectName("verticalLayout_4")
+        self.horizontalLayout_2 = QtWidgets.QHBoxLayout()
+        self.horizontalLayout_2.setObjectName("horizontalLayout_2")
+        self.pushButton_2 = QtWidgets.QPushButton(parent=Settings)
+        self.pushButton_2.setMinimumSize(QtCore.QSize(0, 30))
+        self.pushButton_2.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.pushButton_2.setObjectName("pushButton_2")
+        self.horizontalLayout_2.addWidget(self.pushButton_2)
+        self.pushButton = QtWidgets.QPushButton(parent=Settings)
+        self.pushButton.setMinimumSize(QtCore.QSize(0, 30))
+        self.pushButton.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.pushButton.setObjectName("pushButton")
+        self.horizontalLayout_2.addWidget(self.pushButton)
+        self.verticalLayout_4.addLayout(self.horizontalLayout_2)
+        self.verticalLayout_2.addLayout(self.verticalLayout_4)
+        self.horizontalLayout.addLayout(self.verticalLayout_2)
+        self.verticalLayout.addLayout(self.horizontalLayout)
 
         self.retranslateUi(Settings)
         QtCore.QMetaObject.connectSlotsByName(Settings)
 
     def retranslateUi(self, Settings):
         _translate = QtCore.QCoreApplication.translate
-        Settings.setWindowTitle(_translate("Settings", "Form"))
+        Settings.setWindowTitle(_translate("Settings", "Настройки"))
+        self.but_menu.setText(_translate("Settings", "Меню"))
+        self.label_2.setText(_translate("Settings", "Общие настройки"))
+        self.label.setText(_translate("Settings", "Настройки бд"))
+        self.clear_database.setText(_translate("Settings", "Отчистить базу данных"))
+        self.pushButton_2.setText(_translate("Settings", "PushButton"))
+        self.pushButton.setText(_translate("Settings", "PushButton"))
