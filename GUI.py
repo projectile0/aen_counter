@@ -1,13 +1,13 @@
 import sys
 
 from PyQt6 import QtGui
-from PyQt6.QtWidgets import QApplication, QMainWindow, QWidget
+from PyQt6.QtWidgets import QApplication, QMainWindow
 
 from database import db_connection, get_filterArr, add_person
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
-from gui_files.ui_settings import Ui_Settings as Ui_settings
+from gui_files.ui_settings import Ui_MainWindow as Ui_settings
 from person import get_person
 from utilities import enable_high_resolution
 
@@ -66,7 +66,7 @@ class WidgetAddPeople(QMainWindow, Ui_addPeople):
             pass
 
 
-class WidgetSettings(QWidget, Ui_settings):
+class WidgetSettings(QMainWindow, Ui_settings):
     def __init__(self, parent: Menu):
         super().__init__()
         self.parent = parent
