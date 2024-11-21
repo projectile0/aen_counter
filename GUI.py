@@ -3,7 +3,7 @@ import sys
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow
 
-from database import db_connection, get_filterArr, add_person
+from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
@@ -70,8 +70,12 @@ class WidgetSettings(QMainWindow, Ui_settings):
     def __init__(self, parent: Menu):
         super().__init__()
         self.parent = parent
-        self.but_menu.clicked.connect(parent.show_menu)
         self.setupUi(self)
+        self.but_menu.clicked.connect(parent.show_menu)
+        self.clear_database.clicked.connect(self.click_clear_database)
+
+    def click_clear_database(self):
+        clear_database(self.parent)
 
 
 class WidgetAthletes(QMainWindow, Ui_athletes):
