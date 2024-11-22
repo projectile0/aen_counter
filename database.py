@@ -18,6 +18,9 @@ def add_person(con, person: Person):
         req = f'''INSERT INTO athletes(name, weight, birthday, league) VALUES ('{person.fullname}', {person.weight},
                     '{person.birthday}', (SELECT id FROM leagues WHERE league = '{person.league}'))'''
         cur.execute(req)
+        req = f'''INSERT INTO athletes_nomination(sh_n_saber, sh_n_sword, triathlon) 
+                    VALUES ({person.s_n_saber}, {person.s_n_sword}, {person.triathlon})'''
+        cur.execute(req)
         con.commit()
     except Exception as e:
         print(e)

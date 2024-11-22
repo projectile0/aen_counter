@@ -12,34 +12,47 @@ from PyQt6 import QtCore, QtGui, QtWidgets
 class Ui_Form(object):
     def setupUi(self, Form):
         Form.setObjectName("Form")
-        Form.resize(394, 370)
+        Form.resize(415, 378)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(Form.sizePolicy().hasHeightForWidth())
+        Form.setSizePolicy(sizePolicy)
+        Form.setMinimumSize(QtCore.QSize(0, 0))
+        Form.setBaseSize(QtCore.QSize(394, 370))
         Form.setStyleSheet("background-color: rgb(31, 36, 46);\n"
-                           "color: white;\n"
-                           "font-size: 13pt\n"
-                           "")
+"color: white;\n"
+"font-size: 13pt\n"
+"")
+        Form.setTabShape(QtWidgets.QTabWidget.TabShape.Rounded)
         self.centralwidget = QtWidgets.QWidget(parent=Form)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayout = QtWidgets.QVBoxLayout(self.centralwidget)
+        self.verticalLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetDefaultConstraint)
         self.verticalLayout.setObjectName("verticalLayout")
         self.but_menu = QtWidgets.QPushButton(parent=self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Fixed, QtWidgets.QSizePolicy.Policy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.but_menu.sizePolicy().hasHeightForWidth())
+        self.but_menu.setSizePolicy(sizePolicy)
         self.but_menu.setMinimumSize(QtCore.QSize(0, 30))
         self.but_menu.setMaximumSize(QtCore.QSize(100, 16777215))
         self.but_menu.setStyleSheet("QPushButton{\n"
-                                    "background-color: rgba(255, 255, 255, 30);\n"
-                                    "border: 1px solid rgba(255, 255, 255, 40);\n"
-                                    "border-radius: 3px;\n"
-                                    "}\n"
-                                    "QPushButton:hover{\n"
-                                    "background-color: rgba(255, 255, 255, 40);\n"
-                                    "}\n"
-                                    "QPushButton:pressed{\n"
-                                    "background-color: rgba(255, 255, 255, 70);\n"
-                                    "}")
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
         self.but_menu.setObjectName("but_menu")
         self.verticalLayout.addWidget(self.but_menu)
         self.Form_2 = QtWidgets.QFrame(parent=self.centralwidget)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred,
-                                           QtWidgets.QSizePolicy.Policy.Preferred)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Preferred)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
         sizePolicy.setHeightForWidth(self.Form_2.sizePolicy().hasHeightForWidth())
@@ -51,10 +64,8 @@ class Ui_Form(object):
         self.formLayout = QtWidgets.QFormLayout(self.Form_2)
         self.formLayout.setSizeConstraint(QtWidgets.QLayout.SizeConstraint.SetMaximumSize)
         self.formLayout.setFieldGrowthPolicy(QtWidgets.QFormLayout.FieldGrowthPolicy.AllNonFixedFieldsGrow)
-        self.formLayout.setLabelAlignment(
-            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignTop)
-        self.formLayout.setFormAlignment(
-            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
+        self.formLayout.setLabelAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignTop)
+        self.formLayout.setFormAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.formLayout.setSpacing(10)
         self.formLayout.setObjectName("formLayout")
         self.label_name = QtWidgets.QLabel(parent=self.Form_2)
@@ -69,8 +80,7 @@ class Ui_Form(object):
         self.label_name.setFrameShape(QtWidgets.QFrame.Shape.NoFrame)
         self.label_name.setFrameShadow(QtWidgets.QFrame.Shadow.Plain)
         self.label_name.setLineWidth(1)
-        self.label_name.setAlignment(
-            QtCore.Qt.AlignmentFlag.AlignBottom | QtCore.Qt.AlignmentFlag.AlignRight | QtCore.Qt.AlignmentFlag.AlignTrailing)
+        self.label_name.setAlignment(QtCore.Qt.AlignmentFlag.AlignBottom|QtCore.Qt.AlignmentFlag.AlignRight|QtCore.Qt.AlignmentFlag.AlignTrailing)
         self.label_name.setObjectName("label_name")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_name)
         self.edit_name = QtWidgets.QLineEdit(parent=self.Form_2)
@@ -81,10 +91,10 @@ class Ui_Form(object):
         self.edit_name.setSizePolicy(sizePolicy)
         self.edit_name.setMinimumSize(QtCore.QSize(0, 30))
         self.edit_name.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
-                                     "border-color: rgba(255, 255, 255, 40);\n"
-                                     "border-radius: 3px;\n"
-                                     "padding-left: 5px;\n"
-                                     "")
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;\n"
+"")
         self.edit_name.setObjectName("edit_name")
         self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_name)
         self.label_surname = QtWidgets.QLabel(parent=self.Form_2)
@@ -93,21 +103,23 @@ class Ui_Form(object):
         self.edit_surname = QtWidgets.QLineEdit(parent=self.Form_2)
         self.edit_surname.setMinimumSize(QtCore.QSize(0, 30))
         self.edit_surname.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
-                                        "border-color: rgba(255, 255, 255, 40);\n"
-                                        "border-radius: 3px;\n"
-                                        "padding-left: 5px;\n"
-                                        "")
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;\n"
+"")
         self.edit_surname.setObjectName("edit_surname")
         self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_surname)
+        self.label_date = QtWidgets.QLabel(parent=self.Form_2)
+        self.label_date.setObjectName("label_date")
+        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_date)
         self.edit_birthday = QtWidgets.QDateEdit(parent=self.Form_2)
         self.edit_birthday.setMinimumSize(QtCore.QSize(0, 30))
         self.edit_birthday.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
-                                         "border-color: rgba(255, 255, 255, 40);\n"
-                                         "border-radius: 3px;\n"
-                                         "padding-left: 5px;\n"
-                                         "")
-        self.edit_birthday.setAlignment(
-            QtCore.Qt.AlignmentFlag.AlignLeading | QtCore.Qt.AlignmentFlag.AlignLeft | QtCore.Qt.AlignmentFlag.AlignVCenter)
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;\n"
+"")
+        self.edit_birthday.setAlignment(QtCore.Qt.AlignmentFlag.AlignLeading|QtCore.Qt.AlignmentFlag.AlignLeft|QtCore.Qt.AlignmentFlag.AlignVCenter)
         self.edit_birthday.setButtonSymbols(QtWidgets.QAbstractSpinBox.ButtonSymbols.NoButtons)
         self.edit_birthday.setMinimumDateTime(QtCore.QDateTime(QtCore.QDate(1900, 1, 1), QtCore.QTime(0, 0, 0)))
         self.edit_birthday.setObjectName("edit_birthday")
@@ -115,29 +127,13 @@ class Ui_Form(object):
         self.label_league = QtWidgets.QLabel(parent=self.Form_2)
         self.label_league.setObjectName("label_league")
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_league)
-        self.label_weight = QtWidgets.QLabel(parent=self.Form_2)
-        self.label_weight.setMinimumSize(QtCore.QSize(0, 0))
-        self.label_weight.setObjectName("label_weight")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_weight)
-        self.edit_weight = QtWidgets.QLineEdit(parent=self.Form_2)
-        self.edit_weight.setMinimumSize(QtCore.QSize(0, 30))
-        self.edit_weight.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
-                                       "border-color: rgba(255, 255, 255, 40);\n"
-                                       "border-radius: 3px;\n"
-                                       "padding-left: 5px;\n"
-                                       "")
-        self.edit_weight.setObjectName("edit_weight")
-        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_weight)
-        self.label_date = QtWidgets.QLabel(parent=self.Form_2)
-        self.label_date.setObjectName("label_date")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_date)
         self.league = QtWidgets.QFrame(parent=self.Form_2)
         self.league.setMinimumSize(QtCore.QSize(0, 30))
         self.league.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
-                                  "border-color: rgba(255, 255, 255, 40);\n"
-                                  "border-radius: 3px;\n"
-                                  "padding-left: 5px;\n"
-                                  "")
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;\n"
+"")
         self.league.setObjectName("league")
         self.edit_league = QtWidgets.QHBoxLayout(self.league)
         self.edit_league.setContentsMargins(0, 0, 0, 0)
@@ -145,20 +141,20 @@ class Ui_Form(object):
         self.edit_league.setObjectName("edit_league")
         self.league_a = QtWidgets.QRadioButton(parent=self.league)
         self.league_a.setStyleSheet("background-color: None;\n"
-                                    "border-color: None;\n"
-                                    "")
+"border-color: None;\n"
+"")
         self.league_a.setObjectName("league_a")
         self.edit_league.addWidget(self.league_a)
         self.league_b = QtWidgets.QRadioButton(parent=self.league)
         self.league_b.setStyleSheet("background-color: None;\n"
-                                    "border-color: None;\n"
-                                    "")
+"border-color: None;\n"
+"")
         self.league_b.setObjectName("league_b")
         self.edit_league.addWidget(self.league_b)
         self.league_c = QtWidgets.QRadioButton(parent=self.league)
         self.league_c.setStyleSheet("background-color: None;\n"
-                                    "border-color: None;\n"
-                                    "")
+"border-color: None;\n"
+"")
         self.league_c.setObjectName("league_c")
         self.edit_league.addWidget(self.league_c)
         self.league_o = QtWidgets.QRadioButton(parent=self.league)
@@ -168,26 +164,54 @@ class Ui_Form(object):
         sizePolicy.setHeightForWidth(self.league_o.sizePolicy().hasHeightForWidth())
         self.league_o.setSizePolicy(sizePolicy)
         self.league_o.setStyleSheet("background-color: None;\n"
-                                    "border-color: None;\n"
-                                    "")
+"border-color: None;\n"
+"")
         self.league_o.setObjectName("league_o")
         self.edit_league.addWidget(self.league_o)
         self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.league)
+        self.label_weight = QtWidgets.QLabel(parent=self.Form_2)
+        self.label_weight.setMinimumSize(QtCore.QSize(0, 0))
+        self.label_weight.setObjectName("label_weight")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.LabelRole, self.label_weight)
+        self.edit_weight = QtWidgets.QLineEdit(parent=self.Form_2)
+        self.edit_weight.setMinimumSize(QtCore.QSize(0, 30))
+        self.edit_weight.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;\n"
+"")
+        self.edit_weight.setObjectName("edit_weight")
+        self.formLayout.setWidget(4, QtWidgets.QFormLayout.ItemRole.FieldRole, self.edit_weight)
         self.verticalLayout.addWidget(self.Form_2)
+        self.horizontalLayout = QtWidgets.QHBoxLayout()
+        self.horizontalLayout.setContentsMargins(15, -1, 15, 5)
+        self.horizontalLayout.setSpacing(0)
+        self.horizontalLayout.setObjectName("horizontalLayout")
+        self.check_saber = QtWidgets.QCheckBox(parent=self.centralwidget)
+        self.check_saber.setObjectName("check_saber")
+        self.horizontalLayout.addWidget(self.check_saber)
+        self.check_sword = QtWidgets.QCheckBox(parent=self.centralwidget)
+        self.check_sword.setTristate(False)
+        self.check_sword.setObjectName("check_sword")
+        self.horizontalLayout.addWidget(self.check_sword)
+        self.check_triathlon = QtWidgets.QCheckBox(parent=self.centralwidget)
+        self.check_triathlon.setObjectName("check_triathlon")
+        self.horizontalLayout.addWidget(self.check_triathlon)
+        self.verticalLayout.addLayout(self.horizontalLayout)
         self.addButton = QtWidgets.QPushButton(parent=self.centralwidget)
         self.addButton.setMinimumSize(QtCore.QSize(0, 40))
         self.addButton.setMaximumSize(QtCore.QSize(150, 16777215))
         self.addButton.setStyleSheet("QPushButton{\n"
-                                     "background-color: rgba(255, 255, 255, 30);\n"
-                                     "border: 1px solid rgba(255, 255, 255, 40);\n"
-                                     "border-radius: 3px;\n"
-                                     "}\n"
-                                     "QPushButton:hover{\n"
-                                     "background-color: rgba(255, 255, 255, 40);\n"
-                                     "}\n"
-                                     "QPushButton:pressed{\n"
-                                     "background-color: rgba(255, 255, 255, 70);\n"
-                                     "}")
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
         self.addButton.setObjectName("addButton")
         self.verticalLayout.addWidget(self.addButton)
         Form.setCentralWidget(self.centralwidget)
@@ -204,11 +228,14 @@ class Ui_Form(object):
         self.but_menu.setText(_translate("Form", "Меню"))
         self.label_name.setText(_translate("Form", "Имя"))
         self.label_surname.setText(_translate("Form", "Фамилия"))
-        self.label_league.setText(_translate("Form", "Лига"))
-        self.label_weight.setText(_translate("Form", "Вес (через точку)"))
         self.label_date.setText(_translate("Form", "Дата рождения"))
+        self.label_league.setText(_translate("Form", "Лига"))
         self.league_a.setText(_translate("Form", "A"))
         self.league_b.setText(_translate("Form", "B"))
         self.league_c.setText(_translate("Form", "C"))
         self.league_o.setText(_translate("Form", "O"))
+        self.label_weight.setText(_translate("Form", "Вес (через точку)"))
+        self.check_saber.setText(_translate("Form", "Сабля"))
+        self.check_sword.setText(_translate("Form", "Меч"))
+        self.check_triathlon.setText(_translate("Form", "Триатлон"))
         self.addButton.setText(_translate("Form", "Добавить"))
