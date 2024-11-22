@@ -9,17 +9,28 @@ def db_connection():
 
 def get_filterArr(con, weight=None, year=None, league=None, surname=None):
     cur = con.cursor()
-    return cur.execute('''SELECT * FROM athletes''').fetchall()
+    arr = cur.execute('''
+        SELECT athletes.*,
+           athletes_nomination.sh_n_saber,
+           athletes_nomination.sh_n_sword,
+           athletes_nomination.triathlon
+        FROM athletes
+                 LEFT JOIN athletes_nomination
+                           on athletes.id = athletes_nomination.id''').fetchall()
+    return arr
 
 
 def add_person(con, person: Person):
     try:
         cur = con.cursor()
-        req = f'''INSERT INTO athletes(name, weight, birthday, league) VALUES ('{person.fullname}', {person.weight},
+        req = f'''
+            INSERT INTO athletes(name, weight, birthday, league)
+            VALUES ('{person.fullname}', {person.weight},
                     '{person.birthday}', (SELECT id FROM leagues WHERE league = '{person.league}'))'''
         cur.execute(req)
-        req = f'''INSERT INTO athletes_nomination(sh_n_saber, sh_n_sword, triathlon) 
-                    VALUES ({person.s_n_saber}, {person.s_n_sword}, {person.triathlon})'''
+        req = f'''
+            INSERT INTO athletes_nomination(sh_n_saber, sh_n_sword, triathlon)
+            VALUES ({person.s_n_saber}, {person.s_n_sword}, {person.triathlon})'''
         cur.execute(req)
         con.commit()
     except Exception as e:

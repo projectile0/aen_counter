@@ -1,7 +1,7 @@
 import sys
 
 from PyQt6 import QtGui
-from PyQt6.QtWidgets import QApplication, QMainWindow
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidget, QTableWidgetItem
 
 from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
@@ -91,7 +91,11 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         year = self.getYear_SpinBox.value()
         league = self.getLeague_ComboBox.currentText()
         surname = self.getSurname_LineEdit.text()
-        print(get_filterArr(self.parent.db_con, weight, year, league, surname))
+        arr = get_filterArr(self.parent.db_con, weight, year, league, surname)
+        self.tableWidget.setRowCount(len(arr))
+        for i in range(len(arr)):
+            for j in range(len(arr[0])):
+                self.tableWidget.setItem(i, j, QTableWidgetItem(str(arr[i][j])))
 
 
 def startGUI():
