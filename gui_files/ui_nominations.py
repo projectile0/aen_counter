@@ -1,4 +1,4 @@
-# Form implementation generated from reading ui file 'gui_files/raw_files/nominations.ui'
+# Form implementation generated from reading ui file '.\gui_files\raw_files\nominations.ui'
 #
 # Created by: PyQt6 UI code generator 6.7.1
 #
