@@ -7,6 +7,7 @@ from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
+from gui_files.ui_nominations import Ui_MainWindow as Ui_nominations
 from gui_files.ui_settings import Ui_MainWindow as Ui_settings
 from person import get_person
 from utilities import enable_high_resolution
@@ -25,6 +26,8 @@ class Menu(QMainWindow, Ui_menu):
         self.win_settings = WidgetSettings(self)
         self.win_athletesArr = WidgetAthletes(self)
         self.btn_athletes.clicked.connect(self.open_athletesArr)
+        self.win_nominations = WidgetNominations(self)
+        self.btn_category.clicked.connect(self.open_nominations)
         self.wins = (self, self.win_settings, self.win_addPeople, self.win_athletesArr)
         for i in self.wins:
             i.setFixedSize(i.size())
@@ -45,6 +48,10 @@ class Menu(QMainWindow, Ui_menu):
 
     def open_athletesArr(self):
         self.win_athletesArr.show()
+        self.close()
+
+    def open_nominations(self):
+        self.win_nominations.show()
         self.close()
 
 
@@ -96,6 +103,14 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         for i in range(len(arr)):
             for j in range(len(arr[0])):
                 self.tableWidget.setItem(i, j, QTableWidgetItem(str(arr[i][j])))
+
+
+class WidgetNominations(QMainWindow, Ui_nominations):
+    def __init__(self, parent: Menu):
+        self.parent = parent
+        super().__init__()
+        self.setupUi(self)
+        self.but_menu.clicked.connect(parent.show_menu)
 
 
 def startGUI():
