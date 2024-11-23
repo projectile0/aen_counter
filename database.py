@@ -14,7 +14,8 @@ def get_filterArr(con, weight, year, league, surname):
     league = cur.execute(req).fetchone()
     if league:
         league = league[0]
-    checks = [check_weight(weight), check_year(year), check_league(league), check_surname(surname)]  # Список фильтров
+    checks = [check_weight(weight), check_year(year), check_league(league),
+              check_surname(surname)]  # Список sql фильтров
     checks = list(filter(lambda x: x, checks))
     where = ' and '.join(checks)
     if where:
