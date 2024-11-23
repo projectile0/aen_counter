@@ -34,7 +34,6 @@ def get_person(self):
         league = league[0].text()
         nominations = self.check_saber.isChecked(), self.check_sword.isChecked(), self.check_triathlon.isChecked()
         nominations = (list(map(int, nominations)))
-
         if not (name and surname):
             raise ValueError('Имя и фамилия не могут быть пустыми')
         if not (name.isalpha() and surname.isalpha()):
