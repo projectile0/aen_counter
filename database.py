@@ -1,4 +1,5 @@
 import sqlite3
+from datetime import datetime
 
 from person import Person
 
@@ -13,12 +14,16 @@ def get_filterArr(con, **filters):  # nomination=None, heavy_weight=None):
         'year': check_year,
         'league': check_league,
         'surname': check_surname,
+        'weight_class': check_weight_class,
+        'nomination': check_nomination,
+        'age': check_age
     }
     cur = con.cursor()
-    if "league" in filters.keys():
+
+    if "league" in filters.keys():  # Получение id лиги
         if filters["league"]:
             req = f'''SELECT id FROM leagues 
-                            WHERE league = '{filters['league']}' '''  # Получение id лиги
+                            WHERE league = '{filters['league']}' '''
             league = cur.execute(req).fetchone()
             filters['league'] = league[0]
     sql_filters = []
@@ -37,8 +42,8 @@ def get_filterArr(con, **filters):  # nomination=None, heavy_weight=None):
                  LEFT JOIN athletes_nomination
                            on athletes.id = athletes_nomination.id
         {where}'''
+    print(req)
     arr = cur.execute(req).fetchall()
-
     return arr
 
 
@@ -65,6 +70,37 @@ def check_league(league):  # возвращает sql сравнивающий �
 def check_surname(surname):  # возвращает sql сравнивающий имя и фамилию с таблицей
     if surname:
         return f'athletes.name LIKE "%{surname}%"'
+    return ''
+
+
+def check_weight_class(weight_class):
+    critical_weight = 45
+    if weight_class is not None:
+        w_classes = {
+            'Лёгкий': '<',
+            'Тяжёлый': '>='
+        }
+        return f'athletes.weight {w_classes[weight_class]} {critical_weight}'
+    return ''
+
+
+def check_nomination(nomination):  # возвращает sql для проверки участия в номинации
+    if nomination:
+        noms = {
+            'Меч+щит': 'sh_n_sword',
+            'Сабля+щит': 'sh_n_saber',
+            'Триатлон': 'triathlon'
+        }
+        return f'athletes_nomination.{noms[nomination]} = 1'
+    return ''
+
+
+def check_age(age):  # возвращает sql для проверки соответствия возраста с границами
+    if age:
+        cur_year = datetime.now().year
+        age = age.split('-')
+        print(cur_year - int(age[0]))
+        return f' "{cur_year - int(age[1])}" <= substr(athletes.birthday, 7, 4) and substr(athletes.birthday, 7, 4) <= "{cur_year - int(age[0])}" '
     return ''
 
 

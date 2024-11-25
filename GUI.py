@@ -100,10 +100,7 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         league = self.getLeague_ComboBox.currentText()
         surname = self.getSurname_LineEdit.text()
         arr = get_filterArr(self.parent.db_con, weight=weight, year=year, league=league, surname=surname)
-        self.tableWidget.setRowCount(len(arr))
-        for i in range(len(arr)):
-            for j in range(len(arr[0])):
-                self.tableWidget.setItem(i, j, QTableWidgetItem(str(arr[i][j])))
+        change_tableWidget(self, arr)
 
 
 class WidgetNominations(QMainWindow, Ui_nominations):
@@ -130,7 +127,23 @@ class WidgetNomination_dialog(QDialog, Ui_nomination_dialog):
         self.parent = parent
         self.setFixedSize(self.size())
         self.setWindowIcon(QtGui.QIcon('./res/icon.png'))
+        self.create_button.clicked.connect(self.button_clicked)
 
+    def button_clicked(self):
+        weight_class = self.getWeight_Combo.currentText()
+        age = self.getAge_Combo.currentText()
+        league = self.getLeague_ComboBox.currentText()
+        nomination = self.getNomination_ComboBox.currentText()
+        arr = get_filterArr(self.parent.parent.db_con,
+                            league=league, age=age, nomination=nomination, weight_class=weight_class)
+        change_tableWidget(self.parent, arr)
+
+
+def change_tableWidget(self, arr):
+    self.tableWidget.setRowCount(len(arr))
+    for i in range(len(arr)):
+        for j in range(len(arr[0])):
+            self.tableWidget.setItem(i, j, QTableWidgetItem(str(arr[i][j])))
 
 
 def startGUI():

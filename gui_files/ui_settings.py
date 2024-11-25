@@ -46,7 +46,7 @@ class Ui_MainWindow(object):
         self.label_2.setStyleSheet("")
         self.label_2.setObjectName("label_2")
         self.clear_database = QtWidgets.QPushButton(parent=self.centralwidget)
-        self.clear_database.setGeometry(QtCore.QRect(190, 100, 181, 41))
+        self.clear_database.setGeometry(QtCore.QRect(200, 100, 181, 41))
         self.clear_database.setStyleSheet("QPushButton{\n"
 "background-color: rgba(255, 255, 255, 30);\n"
 "border: 1px solid rgba(255, 255, 255, 40);\n"
@@ -64,6 +64,16 @@ class Ui_MainWindow(object):
         self.label.setMaximumSize(QtCore.QSize(16777215, 20))
         self.label.setStyleSheet("")
         self.label.setObjectName("label")
+        self.label_3 = QtWidgets.QLabel(parent=self.centralwidget)
+        self.label_3.setGeometry(QtCore.QRect(10, 120, 131, 20))
+        self.label_3.setObjectName("label_3")
+        self.lineEdit = QtWidgets.QLineEdit(parent=self.centralwidget)
+        self.lineEdit.setGeometry(QtCore.QRect(140, 120, 41, 21))
+        self.lineEdit.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+"border-color: rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"padding-left: 5px;")
+        self.lineEdit.setObjectName("lineEdit")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -76,3 +86,4 @@ class Ui_MainWindow(object):
         self.label_2.setText(_translate("MainWindow", "Общие настройки"))
         self.clear_database.setText(_translate("MainWindow", "Отчистить базу данных"))
         self.label.setText(_translate("MainWindow", "Настройки бд"))
+        self.label_3.setText(_translate("MainWindow", "Критический вес:"))
