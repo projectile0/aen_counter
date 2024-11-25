@@ -9,97 +9,125 @@
 from PyQt6 import QtCore, QtGui, QtWidgets
 
 
-class Ui_Form(object):
-    def setupUi(self, Form):
-        Form.setObjectName("Form")
-        Form.resize(400, 269)
-        Form.setStyleSheet("background-color: rgb(31, 36, 46);\n"
+class Ui_Dialog(object):
+    def setupUi(self, Dialog):
+        Dialog.setObjectName("Dialog")
+        Dialog.resize(400, 271)
+        Dialog.setStyleSheet("background-color: rgb(31, 36, 46);\n"
 "color: white;\n"
 "font-size: 13pt\n"
 "")
-        self.verticalLayout = QtWidgets.QVBoxLayout(Form)
+        self.verticalLayout = QtWidgets.QVBoxLayout(Dialog)
         self.verticalLayout.setObjectName("verticalLayout")
-        self.formLayout = QtWidgets.QFormLayout()
-        self.formLayout.setContentsMargins(15, 15, 15, 0)
-        self.formLayout.setVerticalSpacing(15)
-        self.formLayout.setObjectName("formLayout")
-        self.getWeight_Label = QtWidgets.QLabel(parent=Form)
-        self.getWeight_Label.setObjectName("getWeight_Label")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getWeight_Label)
-        self.getWeight_Combo = QtWidgets.QComboBox(parent=Form)
-        self.getWeight_Combo.setMinimumSize(QtCore.QSize(0, 0))
-        self.getWeight_Combo.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+        self.formLayout_2 = QtWidgets.QFormLayout()
+        self.formLayout_2.setContentsMargins(15, 15, 15, 0)
+        self.formLayout_2.setVerticalSpacing(15)
+        self.formLayout_2.setObjectName("formLayout_2")
+        self.getWeight_Label_2 = QtWidgets.QLabel(parent=Dialog)
+        self.getWeight_Label_2.setObjectName("getWeight_Label_2")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getWeight_Label_2)
+        self.getWeight_Combo_2 = QtWidgets.QComboBox(parent=Dialog)
+        self.getWeight_Combo_2.setMinimumSize(QtCore.QSize(0, 0))
+        self.getWeight_Combo_2.setStyleSheet("QComboBox{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
+"}\n"
+"QComboBox QAbstractItemView{\n"
+"background-color: rgb(38, 46, 61);\n"
+"border:1px solid rgba(255, 255, 255, 70);\n"
+"border-radius: 3px;\n"
+"}\n"
 "")
-        self.getWeight_Combo.setObjectName("getWeight_Combo")
-        self.getWeight_Combo.addItem("")
-        self.getWeight_Combo.setItemText(0, "")
-        self.getWeight_Combo.addItem("")
-        self.getWeight_Combo.addItem("")
-        self.formLayout.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getWeight_Combo)
-        self.getYear_Label = QtWidgets.QLabel(parent=Form)
-        self.getYear_Label.setObjectName("getYear_Label")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getYear_Label)
-        self.getAge_Combo_2 = QtWidgets.QComboBox(parent=Form)
-        self.getAge_Combo_2.setMinimumSize(QtCore.QSize(0, 0))
-        self.getAge_Combo_2.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+        self.getWeight_Combo_2.setObjectName("getWeight_Combo_2")
+        self.getWeight_Combo_2.addItem("")
+        self.getWeight_Combo_2.setItemText(0, "")
+        self.getWeight_Combo_2.addItem("")
+        self.getWeight_Combo_2.addItem("")
+        self.formLayout_2.setWidget(0, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getWeight_Combo_2)
+        self.getYear_Label_2 = QtWidgets.QLabel(parent=Dialog)
+        self.getYear_Label_2.setObjectName("getYear_Label_2")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getYear_Label_2)
+        self.getAge_Combo_3 = QtWidgets.QComboBox(parent=Dialog)
+        self.getAge_Combo_3.setMinimumSize(QtCore.QSize(0, 0))
+        self.getAge_Combo_3.setStyleSheet("QComboBox{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
+"}\n"
+"QComboBox QAbstractItemView{\n"
+"background-color: rgb(38, 46, 61);\n"
+"border:1px solid rgba(255, 255, 255, 70);\n"
+"border-radius: 3px;\n"
+"}\n"
 "")
-        self.getAge_Combo_2.setObjectName("getAge_Combo_2")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.setItemText(0, "")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.getAge_Combo_2.addItem("")
-        self.formLayout.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getAge_Combo_2)
-        self.getLeague_Label = QtWidgets.QLabel(parent=Form)
-        self.getLeague_Label.setObjectName("getLeague_Label")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getLeague_Label)
-        self.getNomination_Label = QtWidgets.QLabel(parent=Form)
-        self.getNomination_Label.setObjectName("getNomination_Label")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getNomination_Label)
-        self.getLeague_ComboBox = QtWidgets.QComboBox(parent=Form)
-        self.getLeague_ComboBox.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+        self.getAge_Combo_3.setObjectName("getAge_Combo_3")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.setItemText(0, "")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.getAge_Combo_3.addItem("")
+        self.formLayout_2.setWidget(1, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getAge_Combo_3)
+        self.getLeague_Label_2 = QtWidgets.QLabel(parent=Dialog)
+        self.getLeague_Label_2.setObjectName("getLeague_Label_2")
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getLeague_Label_2)
+        self.getLeague_ComboBox_2 = QtWidgets.QComboBox(parent=Dialog)
+        self.getLeague_ComboBox_2.setStyleSheet("QComboBox{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
-"padding-left: 5px;")
-        self.getLeague_ComboBox.setObjectName("getLeague_ComboBox")
-        self.getLeague_ComboBox.addItem("")
-        self.getLeague_ComboBox.setItemText(0, "")
-        self.getLeague_ComboBox.addItem("")
-        self.getLeague_ComboBox.addItem("")
-        self.getLeague_ComboBox.addItem("")
-        self.getLeague_ComboBox.addItem("")
-        self.formLayout.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getLeague_ComboBox)
-        self.getNomination_ComboBox = QtWidgets.QComboBox(parent=Form)
+"}\n"
+"QComboBox QAbstractItemView{\n"
+"background-color: rgb(38, 46, 61);\n"
+"border:1px solid rgba(255, 255, 255, 70);\n"
+"border-radius: 3px;\n"
+"}\n"
+"")
+        self.getLeague_ComboBox_2.setObjectName("getLeague_ComboBox_2")
+        self.getLeague_ComboBox_2.addItem("")
+        self.getLeague_ComboBox_2.setItemText(0, "")
+        self.getLeague_ComboBox_2.addItem("")
+        self.getLeague_ComboBox_2.addItem("")
+        self.getLeague_ComboBox_2.addItem("")
+        self.getLeague_ComboBox_2.addItem("")
+        self.formLayout_2.setWidget(2, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getLeague_ComboBox_2)
+        self.getNomination_Label_2 = QtWidgets.QLabel(parent=Dialog)
+        self.getNomination_Label_2.setObjectName("getNomination_Label_2")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.ItemRole.LabelRole, self.getNomination_Label_2)
+        self.getNomination_ComboBox_2 = QtWidgets.QComboBox(parent=Dialog)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Preferred, QtWidgets.QSizePolicy.Policy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.getNomination_ComboBox.sizePolicy().hasHeightForWidth())
-        self.getNomination_ComboBox.setSizePolicy(sizePolicy)
-        self.getNomination_ComboBox.setStyleSheet("background-color: rgba(255, 255, 255, 30);\n"
+        sizePolicy.setHeightForWidth(self.getNomination_ComboBox_2.sizePolicy().hasHeightForWidth())
+        self.getNomination_ComboBox_2.setSizePolicy(sizePolicy)
+        self.getNomination_ComboBox_2.setStyleSheet("QComboBox{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
 "border-color: rgba(255, 255, 255, 40);\n"
 "border-radius: 3px;\n"
-"padding-left: 5px;")
-        self.getNomination_ComboBox.setObjectName("getNomination_ComboBox")
-        self.getNomination_ComboBox.addItem("")
-        self.getNomination_ComboBox.setItemText(0, "")
-        self.getNomination_ComboBox.addItem("")
-        self.getNomination_ComboBox.addItem("")
-        self.getNomination_ComboBox.addItem("")
-        self.formLayout.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getNomination_ComboBox)
-        self.verticalLayout.addLayout(self.formLayout)
+"}\n"
+"QComboBox QAbstractItemView{\n"
+"background-color: rgb(38, 46, 61);\n"
+"border:1px solid rgba(255, 255, 255, 70);\n"
+"border-radius: 3px;\n"
+"}\n"
+"")
+        self.getNomination_ComboBox_2.setObjectName("getNomination_ComboBox_2")
+        self.getNomination_ComboBox_2.addItem("")
+        self.getNomination_ComboBox_2.setItemText(0, "")
+        self.getNomination_ComboBox_2.addItem("")
+        self.getNomination_ComboBox_2.addItem("")
+        self.getNomination_ComboBox_2.addItem("")
+        self.formLayout_2.setWidget(3, QtWidgets.QFormLayout.ItemRole.FieldRole, self.getNomination_ComboBox_2)
+        self.verticalLayout.addLayout(self.formLayout_2)
         self.horizontalLayout = QtWidgets.QHBoxLayout()
         self.horizontalLayout.setContentsMargins(-1, 20, -1, 15)
         self.horizontalLayout.setObjectName("horizontalLayout")
-        self.create_button = QtWidgets.QPushButton(parent=Form)
+        self.create_button = QtWidgets.QPushButton(parent=Dialog)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -119,7 +147,7 @@ class Ui_Form(object):
 "}")
         self.create_button.setObjectName("create_button")
         self.horizontalLayout.addWidget(self.create_button)
-        self.cancel_button = QtWidgets.QPushButton(parent=Form)
+        self.cancel_button = QtWidgets.QPushButton(parent=Dialog)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Policy.Minimum, QtWidgets.QSizePolicy.Policy.Minimum)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
@@ -141,32 +169,32 @@ class Ui_Form(object):
         self.horizontalLayout.addWidget(self.cancel_button)
         self.verticalLayout.addLayout(self.horizontalLayout)
 
-        self.retranslateUi(Form)
-        QtCore.QMetaObject.connectSlotsByName(Form)
+        self.retranslateUi(Dialog)
+        QtCore.QMetaObject.connectSlotsByName(Dialog)
 
-    def retranslateUi(self, Form):
+    def retranslateUi(self, Dialog):
         _translate = QtCore.QCoreApplication.translate
-        Form.setWindowTitle(_translate("Form", "Form"))
-        self.getWeight_Label.setText(_translate("Form", "Вес:"))
-        self.getWeight_Combo.setItemText(1, _translate("Form", "Лёгкий"))
-        self.getWeight_Combo.setItemText(2, _translate("Form", "Тяжёлый"))
-        self.getYear_Label.setText(_translate("Form", "Лет:"))
-        self.getAge_Combo_2.setItemText(1, _translate("Form", "6-7"))
-        self.getAge_Combo_2.setItemText(2, _translate("Form", "8-9"))
-        self.getAge_Combo_2.setItemText(3, _translate("Form", "10-11"))
-        self.getAge_Combo_2.setItemText(4, _translate("Form", "12-13"))
-        self.getAge_Combo_2.setItemText(5, _translate("Form", "14-15"))
-        self.getAge_Combo_2.setItemText(6, _translate("Form", "16-17"))
-        self.getAge_Combo_2.setItemText(7, _translate("Form", "18-40"))
-        self.getAge_Combo_2.setItemText(8, _translate("Form", "40+"))
-        self.getLeague_Label.setText(_translate("Form", "Лига:"))
-        self.getNomination_Label.setText(_translate("Form", "Номинация:"))
-        self.getLeague_ComboBox.setItemText(1, _translate("Form", "A"))
-        self.getLeague_ComboBox.setItemText(2, _translate("Form", "B"))
-        self.getLeague_ComboBox.setItemText(3, _translate("Form", "C"))
-        self.getLeague_ComboBox.setItemText(4, _translate("Form", "O"))
-        self.getNomination_ComboBox.setItemText(1, _translate("Form", "Меч+щит"))
-        self.getNomination_ComboBox.setItemText(2, _translate("Form", "Сабля+щит"))
-        self.getNomination_ComboBox.setItemText(3, _translate("Form", "Триатлон"))
-        self.create_button.setText(_translate("Form", "Создать Номинацию"))
-        self.cancel_button.setText(_translate("Form", "Отмена"))
+        Dialog.setWindowTitle(_translate("Dialog", "Dialog"))
+        self.getWeight_Label_2.setText(_translate("Dialog", "Вес:"))
+        self.getWeight_Combo_2.setItemText(1, _translate("Dialog", "Лёгкий"))
+        self.getWeight_Combo_2.setItemText(2, _translate("Dialog", "Тяжёлый"))
+        self.getYear_Label_2.setText(_translate("Dialog", "Лет:"))
+        self.getAge_Combo_3.setItemText(1, _translate("Dialog", "6-7"))
+        self.getAge_Combo_3.setItemText(2, _translate("Dialog", "8-9"))
+        self.getAge_Combo_3.setItemText(3, _translate("Dialog", "10-11"))
+        self.getAge_Combo_3.setItemText(4, _translate("Dialog", "12-13"))
+        self.getAge_Combo_3.setItemText(5, _translate("Dialog", "14-15"))
+        self.getAge_Combo_3.setItemText(6, _translate("Dialog", "16-17"))
+        self.getAge_Combo_3.setItemText(7, _translate("Dialog", "18-40"))
+        self.getAge_Combo_3.setItemText(8, _translate("Dialog", "40+"))
+        self.getLeague_Label_2.setText(_translate("Dialog", "Лига:"))
+        self.getLeague_ComboBox_2.setItemText(1, _translate("Dialog", "A"))
+        self.getLeague_ComboBox_2.setItemText(2, _translate("Dialog", "B"))
+        self.getLeague_ComboBox_2.setItemText(3, _translate("Dialog", "C"))
+        self.getLeague_ComboBox_2.setItemText(4, _translate("Dialog", "O"))
+        self.getNomination_Label_2.setText(_translate("Dialog", "Номинация:"))
+        self.getNomination_ComboBox_2.setItemText(1, _translate("Dialog", "Меч+щит"))
+        self.getNomination_ComboBox_2.setItemText(2, _translate("Dialog", "Сабля+щит"))
+        self.getNomination_ComboBox_2.setItemText(3, _translate("Dialog", "Триатлон"))
+        self.create_button.setText(_translate("Dialog", "Создать Номинацию"))
+        self.cancel_button.setText(_translate("Dialog", "Отмена"))

@@ -7,17 +7,25 @@ def db_connection():
     return sqlite3.connect('database.sqlite')
 
 
-def get_filterArr(con, weight, year, league, surname):
+def get_filterArr(con, **filters):  # nomination=None, heavy_weight=None):
+    filter_dict = {
+        'weight': check_weight,
+        'year': check_year,
+        'league': check_league,
+        'surname': check_surname,
+    }
     cur = con.cursor()
-    req = f'''SELECT id FROM leagues 
-                WHERE league = '{league}' '''  # Получение id лиги
-    league = cur.execute(req).fetchone()
-    if league:
-        league = league[0]
-    checks = [check_weight(weight), check_year(year), check_league(league),
-              check_surname(surname)]  # Список sql фильтров
-    checks = list(filter(lambda x: x, checks))
-    where = ' and '.join(checks)
+    if "league" in filters.keys():
+        if filters["league"]:
+            req = f'''SELECT id FROM leagues 
+                            WHERE league = '{filters['league']}' '''  # Получение id лиги
+            league = cur.execute(req).fetchone()
+            filters['league'] = league[0]
+    sql_filters = []
+    for i in filters.keys():  # добавление sql кода в список фильтров
+        if filters[i]:
+            sql_filters.append(filter_dict[i](filters[i]))
+    where = ' and '.join(sql_filters)
     if where:
         where = 'WHERE ' + where
     req = f'''
@@ -48,6 +56,7 @@ def check_year(year):  # возвращает sql сравнивающий го�
 
 
 def check_league(league):  # возвращает sql сравнивающий лигу с таблицей
+
     if league:
         return f'athletes.league = {league}'
     return ''

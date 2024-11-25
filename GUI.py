@@ -1,12 +1,13 @@
 import sys
 
 from PyQt6 import QtGui
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QDialog
 
 from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
 from gui_files.ui_menu import Ui_MainWindow as Ui_menu
+from gui_files.ui_nomination_dialog import Ui_Dialog as Ui_nomination_dialog
 from gui_files.ui_nominations import Ui_MainWindow as Ui_nominations
 from gui_files.ui_settings import Ui_MainWindow as Ui_settings
 from person import get_person
@@ -19,7 +20,7 @@ class Menu(QMainWindow, Ui_menu):
         super().__init__()
         self.setupUi(self)
         self.setWindowTitle('aen_counter')
-        self.btn_addPeople.clicked.connect(self.open_adder)
+        self.btn_addPeople.clicked.connect(self.open_adder)  # Создание окон и привязка кнопок в меню к их открытию
         self.win_addPeople = WidgetAddPeople(self)
         self.win_addPeople.setFixedSize(self.win_addPeople.size())
         self.btn_settings.clicked.connect(self.open_settings)
@@ -28,8 +29,8 @@ class Menu(QMainWindow, Ui_menu):
         self.btn_athletes.clicked.connect(self.open_athletesArr)
         self.win_nominations = WidgetNominations(self)
         self.btn_category.clicked.connect(self.open_nominations)
-        self.wins = (self, self.win_settings, self.win_addPeople, self.win_athletesArr)
-        for i in self.wins:
+        self.wins = [self, self.win_settings, self.win_addPeople, self.win_athletesArr, self.win_nominations]
+        for i in self.wins:  # установление фиксированного размера окна, установка иконки приложения
             i.setFixedSize(i.size())
             i.setWindowIcon(QtGui.QIcon('./res/icon.png'))
 
@@ -98,7 +99,7 @@ class WidgetAthletes(QMainWindow, Ui_athletes):
         year = self.getYear_lineEdit.text()
         league = self.getLeague_ComboBox.currentText()
         surname = self.getSurname_LineEdit.text()
-        arr = get_filterArr(self.parent.db_con, weight, year, league, surname)
+        arr = get_filterArr(self.parent.db_con, weight=weight, year=year, league=league, surname=surname)
         self.tableWidget.setRowCount(len(arr))
         for i in range(len(arr)):
             for j in range(len(arr[0])):
@@ -111,6 +112,25 @@ class WidgetNominations(QMainWindow, Ui_nominations):
         super().__init__()
         self.setupUi(self)
         self.but_menu.clicked.connect(parent.show_menu)
+        self.dialog = WidgetNomination_dialog(self)
+        self.create_button.clicked.connect(self.open_create_dialog)
+
+    def open_create_dialog(self):  # Закрытие окна диалога вместе с родителем
+        self.dialog.exec()
+
+    def close(self):
+        super().close()
+        self.dialog.close()
+
+
+class WidgetNomination_dialog(QDialog, Ui_nomination_dialog):
+    def __init__(self, parent):
+        super().__init__()
+        self.setupUi(self)
+        self.parent = parent
+        self.setFixedSize(self.size())
+        self.setWindowIcon(QtGui.QIcon('./res/icon.png'))
+
 
 
 def startGUI():
