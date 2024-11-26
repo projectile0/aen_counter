@@ -42,7 +42,6 @@ def get_filterArr(con, **filters):  # nomination=None, heavy_weight=None):
                  LEFT JOIN athletes_nomination
                            on athletes.id = athletes_nomination.id
         {where}'''
-    print(req)
     arr = cur.execute(req).fetchall()
     return arr
 

@@ -74,6 +74,20 @@ class Ui_MainWindow(object):
 "border-radius: 3px;\n"
 "padding-left: 5px;")
         self.lineEdit.setObjectName("lineEdit")
+        self.save_database_txt = QtWidgets.QPushButton(parent=self.centralwidget)
+        self.save_database_txt.setGeometry(QtCore.QRect(150, 150, 231, 41))
+        self.save_database_txt.setStyleSheet("QPushButton{\n"
+"background-color: rgba(255, 255, 255, 30);\n"
+"border: 1px solid rgba(255, 255, 255, 40);\n"
+"border-radius: 3px;\n"
+"}\n"
+"QPushButton:hover{\n"
+"background-color: rgba(255, 255, 255, 40);\n"
+"}\n"
+"QPushButton:pressed{\n"
+"background-color: rgba(255, 255, 255, 70);\n"
+"}")
+        self.save_database_txt.setObjectName("save_database_txt")
         MainWindow.setCentralWidget(self.centralwidget)
 
         self.retranslateUi(MainWindow)
@@ -87,3 +101,4 @@ class Ui_MainWindow(object):
         self.clear_database.setText(_translate("MainWindow", "Отчистить базу данных"))
         self.label.setText(_translate("MainWindow", "Настройки бд"))
         self.label_3.setText(_translate("MainWindow", "Критический вес:"))
+        self.save_database_txt.setText(_translate("MainWindow", "Сохранить базу в формате txt"))
