@@ -1,8 +1,7 @@
 import sys
 
 from PyQt6 import QtGui
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QDialog
-
+from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QDialog, QMessageBox
 from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
@@ -83,7 +82,11 @@ class WidgetSettings(QMainWindow, Ui_settings):
         self.clear_database.clicked.connect(self.click_clear_database)
 
     def click_clear_database(self):
-        clear_database(self.parent)
+        valid = QMessageBox.question(
+            self, '', 'Действительно отчистить Базу данных?',
+            buttons=QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
+        if valid == QMessageBox.StandardButton.Yes:
+            clear_database(self.parent)
 
 
 class WidgetAthletes(QMainWindow, Ui_athletes):
