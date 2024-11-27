@@ -2,6 +2,7 @@ import sys
 
 from PyQt6 import QtGui
 from PyQt6.QtWidgets import QApplication, QMainWindow, QTableWidgetItem, QDialog, QMessageBox, QFileDialog
+
 from database import db_connection, get_filterArr, add_person, clear_database
 from gui_files.ui_addPeople import Ui_Form as Ui_addPeople
 from gui_files.ui_athletes import Ui_MainWindow as Ui_athletes
@@ -25,13 +26,14 @@ class Menu(QMainWindow, Ui_menu):
         self.btn_settings.clicked.connect(self.open_settings)
         self.win_settings = WidgetSettings(self)
         self.win_athletesArr = WidgetAthletes(self)
-        self.btn_athletes.clicked.connect(self.open_athletesArr)
+        self.btn_athletesArr.clicked.connect(self.open_athletesArr)
         self.win_nominations = WidgetNominations(self)
         self.btn_category.clicked.connect(self.open_nominations)
         self.wins = [self, self.win_settings, self.win_addPeople, self.win_athletesArr, self.win_nominations]
         for i in self.wins:  # установление фиксированного размера окна, установка иконки приложения
             i.setFixedSize(i.size())
-            i.setWindowIcon(QtGui.QIcon('./res/icon.png'))
+            i.setWindowIcon(QtGui.QIcon('img/icon.png'))
+
 
     def show_menu(self):
         self.show()
@@ -88,13 +90,12 @@ class WidgetSettings(QMainWindow, Ui_settings):
             buttons=QMessageBox.StandardButton.Yes | QMessageBox.StandardButton.No)
         if valid == QMessageBox.StandardButton.Yes:
             clear_database(self.parent)
+
     def click_save_txt(self):
         arr = get_filterArr(self.parent.db_con)
         fname = QFileDialog.getSaveFileUrl(self)[0].toLocalFile()
         with open(fname, 'w', encoding='utf-8') as f:
             f.write('\n'.join(map(lambda x: ', '.join(map(str, x)), arr)))
-
-
 
 
 class WidgetAthletes(QMainWindow, Ui_athletes):
@@ -137,7 +138,7 @@ class WidgetNomination_dialog(QDialog, Ui_nomination_dialog):
         self.setupUi(self)
         self.parent = parent
         self.setFixedSize(self.size())
-        self.setWindowIcon(QtGui.QIcon('./res/icon.png'))
+        self.setWindowIcon(QtGui.QIcon('img/icon.png'))
         self.create_button.clicked.connect(self.button_clicked)
 
     def button_clicked(self):
