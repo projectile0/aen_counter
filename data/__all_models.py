@@ -1,1 +1,1 @@
-from . import athletes
+from . import athletes, users
