@@ -1,16 +1,23 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <form class="g-col-2" method="post">
+    <div class="container mt-4">
+        <form method="post" class="row g-3">
+            {{ form.hidden_tag() }}
+
             {% for field in form if field.name not in ['csrf_token', 'submit'] %}
-                {{ field.label }}
-                {{ field(class = 'form-control') }}
-                {% for error in field.errors %}
-                    <div class="alert alert-danger" role="alert">{{ error }}</div>
-                {% endfor %}
+                <div class="col-md-6 mb-3">
+                    {{ field.label(class="form-label") }}
+                    {{ field(class="form-control") }}
+                    {% for error in field.errors %}
+                        <div class="alert alert-danger mt-2" role="alert">{{ error }}</div>
+                    {% endfor %}
+                </div>
             {% endfor %}
-            {{ form.submit(class = 'btn btn-primary from-control') }}
+
+            <div class="col-12">
+                {{ form.submit(class="btn btn-primary") }}
+            </div>
         </form>
     </div>
 {% endblock %}
