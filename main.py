@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect
 from data import db_session
 from forms.RegisterFormAthlete import RegisterFormAthlete
 
@@ -15,7 +15,10 @@ def add_athlete():
     if request.method == 'GET':
         return render_template('add_athlete.html', form=form)
     else:
-        return 'success'
+
+        if form.validate_on_submit():
+            return redirect('/')
+        return render_template('add_athlete.html', form=form)
 
 def main():
     db_session.global_init("db/database.db")

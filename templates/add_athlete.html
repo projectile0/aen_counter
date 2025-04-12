@@ -3,6 +3,7 @@
 {% block content %}
     <div class="container">
         <form class="g-col-2" method="post">
+            {{ form.hidden_tag() }}
             {% for field in form if field.name not in ['csrf_token', 'submit'] %}
                 {{ field.label }}
                 {{ field(class = 'form-control') }}
