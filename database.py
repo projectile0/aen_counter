@@ -5,7 +5,7 @@ from data.users import User
 from forms import RegisterFormAthlete, RegisterFormUser
 
 
-def db_add_user(form: RegisterFormUser):  # Принимает RegisterFormAthlete, добавляет спортсмена в базу
+def db_add_user(form: RegisterFormUser):  # Принимает RegisterFormUser, добавляет пользователя в базу
     db_sess = create_session()
     user = User()
     user.username = form.username.data.strip()

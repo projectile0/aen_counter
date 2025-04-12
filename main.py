@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect
-from flask_login import LoginManager, login_required, login_user
+from flask_login import LoginManager, login_required, login_user, logout_user
 
 from data import db_session
 from database import *
@@ -42,9 +42,14 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
-        return redirect('/')
     return render_template('page_form.html', form=form)
 
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect("/")
 
 def main():
     db_session.global_init("db/database.db")

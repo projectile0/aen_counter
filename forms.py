@@ -5,7 +5,7 @@ from wtforms.validators import Length, InputRequired, EqualTo, DataRequired
 from validators import username_validator, password_validator, string_validator, exist_user
 
 
-class RegisterFormUser(FlaskForm):
+class RegisterFormUser(FlaskForm): # Форма регистрации
     username = StringField('Имя пользователя',
                            validators=[InputRequired(), Length(min=5, max=20), username_validator, exist_user])
     password = PasswordField('Пароль', validators=[InputRequired(), Length(min=8, max=40), password_validator])
@@ -14,14 +14,14 @@ class RegisterFormUser(FlaskForm):
     submit = SubmitField('Войти')
 
 
-class LoginForm(FlaskForm):
+class LoginForm(FlaskForm): # Форма авторизации
     username = StringField('Имя пользователя', validators=[InputRequired(), Length(min=5, max=20), username_validator])
     password = PasswordField('Пароль', validators=[InputRequired(), Length(min=8, max=40), password_validator])
     remember_me = BooleanField('Запомнить меня')
     submit = SubmitField('Войти')
 
 
-class RegisterFormAthlete(FlaskForm):
+class RegisterFormAthlete(FlaskForm): # Форма добавления спортсмена
     name = StringField('Имя', validators=[InputRequired(), Length(max=20, message='Недопустимая длинна(>20)'),
                                           string_validator])
     surname = StringField('Фамилия', validators=[InputRequired(), Length(max=20, message='Недопустимая длинна(>20)'),
