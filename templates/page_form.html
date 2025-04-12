@@ -6,11 +6,11 @@
             <div class="card shadow-sm">
                 <div class="card-body p-4">
                     <h2 class="card-title text-center mb-4">Регистрация</h2>
-                    <form method="post" class="needs-validation" novalidate>
+                    <form method="post" class="needs-validation text-center" novalidate>
                         {{ form.hidden_tag() }}
 
                         {% for field in form if field.name not in ['csrf_token', 'submit', 'remember_me'] %}
-                            <div class="mb-3 text-center">
+                            <div class="mb-3">
                                 {{ field.label(class="form-label") }}
                                 {{ field(class="form-control mx-auto", style="max-width: 300px;") }}
                                 {% for error in field.errors %}
@@ -19,13 +19,14 @@
                                         {{ error }}
                                     </div>
                                 {% endfor %}
-                                {% if 'remember_me' in form %}
-                                    {{ form.remember_me() }}
-                                    {{ form.remember_me.label }}
-                                {% endif %}
                             </div>
                         {% endfor %}
-
+                        <div class="mb-3">
+                            {% if 'remember_me' in form %}
+                                {{ form.remember_me() }}
+                                {{ form.remember_me.label }}
+                            {% endif %}
+                        </div>
 
                         <div class="text-center">
                             {{ form.submit(class="btn btn-primary btn-lg") }}
