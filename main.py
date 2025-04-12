@@ -4,8 +4,7 @@ from flask_login import LoginManager, login_required, login_user
 from data import db_session
 from forms import RegisterFormAthlete, LoginForm, RegisterFormUser
 from data.users import User
-from data.athletes import Athlete
-from data.db_session import  create_session
+from database import *
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
@@ -48,24 +47,7 @@ def login():
     return render_template('page_form.html', form=form)
 
 
-def db_add_user(form: RegisterFormUser):  # Принимает RegisterFormAthlete, добавляет спортсмена в базу
-    db_sess = create_session()
-    user = User()
-    user.username = form.username.data.strip()
-    user.set_password(form.password.data)
-    db_sess.add(user)
-    db_sess.commit()
 
-def db_add_athlete(form: RegisterFormAthlete):  # Принимает RegisterFormAthlete, добавляет спортсмена в базу
-    db_sess = create_session()
-    athlete = Athlete()
-    athlete.name = form.name.data.strip().capitalize()
-    athlete.surname = form.surname.data.strip().capitalize()
-    athlete.birth_date = form.birth_date.data
-    athlete.weight = form.weight.data
-    athlete.league = form.league.data
-    db_sess.add(athlete)
-    db_sess.commit()
 
 
 def main():
