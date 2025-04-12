@@ -1,11 +1,15 @@
-from wtforms import ValidationError
 from string import digits, ascii_letters
+
+from wtforms import ValidationError
+
 from data.db_session import create_session
 from data.users import User
+
 
 def string_validator(form, field):
     if not field.data.strip().isalpha():
         raise ValidationError('Допустимы только буквы')
+
 
 def username_validator(form, field):
     username = field.data.strip()
@@ -20,5 +24,5 @@ def username_validator(form, field):
 
 def password_validator(form, field):
     password = field.data
-    if ' '  in password:
+    if ' ' in password:
         raise ValidationError('Пароль не должен содержать пробелы')
