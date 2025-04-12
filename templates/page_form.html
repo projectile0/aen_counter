@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container d-flex justify-content-center mt-5">
+    <div class="container d-flex justify-content-center mt-5 pt-5">
         <div class="col-md-6">
             <form method="post" class="needs-validation" novalidate>
                 {{ form.hidden_tag() }}
@@ -11,7 +11,9 @@
                         {{ field.label(class="form-label") }}
                         {{ field(class="form-control mx-auto", style="max-width: 300px;") }}
                         {% for error in field.errors %}
-                            <div class="alert alert-danger mt-2" role="alert">{{ error }}</div>
+                            <div class="alert alert-danger mt-1 py-1 px-2" style="display: inline-block; font-size: 1.1rem;">
+                                {{ error }}
+                            </div>
                         {% endfor %}
                     </div>
                 {% endfor %}
