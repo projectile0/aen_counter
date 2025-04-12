@@ -1,5 +1,5 @@
 from flask import Flask, render_template, redirect
-from flask_login import LoginManager, login_required, login_user, logout_user
+from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
 from data import db_session
 from database import *
@@ -8,8 +8,18 @@ from forms import LoginForm
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
 
+db_session.global_init("db/database.db")
+login_manager = LoginManager()
+login_manager.login_view = 'login'
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    db_sess = db_session.create_session()
+    return db_sess.query(User).get(user_id)
 
 @app.route('/')
+@app.route('/index')
 def index():
     return render_template('base.html')
 
@@ -35,6 +45,8 @@ def reg_athlete():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    if current_user.is_authenticated:
+        return redirect('/')
     form = LoginForm()
     if form.validate_on_submit():
         db_sess = db_session.create_session()
@@ -52,14 +64,7 @@ def logout():
     return redirect("/")
 
 def main():
-    db_session.global_init("db/database.db")
-    login_manager = LoginManager()
-    login_manager.init_app(app)
 
-    @login_manager.user_loader
-    def load_user(user_id):
-        db_sess = db_session.create_session()
-        return db_sess.query(User).get(user_id)
 
     app.run(port=8080, debug=True)
 
