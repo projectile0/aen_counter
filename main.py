@@ -10,7 +10,7 @@ app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
 
 @app.route('/')
 def index():
-    return 'Главная страница'
+    return render_template('base.html')
 
 
 @app.route('/add_athlete', methods=['GET', 'POST'])
