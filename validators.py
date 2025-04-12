@@ -17,7 +17,11 @@ def username_validator(form, field):
         raise ValidationError('Допустимы только цифры и латиниские буквы')
     if not any(map(lambda x: x in ascii_letters, field.data.strip())):
         raise ValidationError('Необходима латинские буквы')
+
+
+def exist_user(form, field):
     db_sess = create_session()
+    username = field.data.strip()
     if db_sess.query(User).filter(User.username == username).first():
         raise ValidationError('Такой пользователь уже существует')
 

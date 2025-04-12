@@ -2,9 +2,8 @@ from flask import Flask, render_template, redirect
 from flask_login import LoginManager, login_required, login_user
 
 from data import db_session
-from forms import RegisterFormAthlete, LoginForm, RegisterFormUser
-from data.users import User
 from database import *
+from forms import LoginForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
@@ -45,9 +44,6 @@ def login():
             return redirect("/")
         return redirect('/')
     return render_template('page_form.html', form=form)
-
-
-
 
 
 def main():
