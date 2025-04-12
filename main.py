@@ -10,15 +10,15 @@ def index():
     return 'Главная страница'
 
 @app.route('/add_athlete', methods=['GET', 'POST'])
-def add_athlete():
+def page_add_athlete():
     form = RegisterFormAthlete()
     if request.method == 'GET':
-        return render_template('add_athlete.html', form=form)
+        return render_template('page_add_athlete.html', form=form)
     else:
 
         if form.validate_on_submit():
             return redirect('/')
-        return render_template('add_athlete.html', form=form)
+        return render_template('page_add_athlete.html', form=form)
 
 def main():
     db_session.global_init("db/database.db")

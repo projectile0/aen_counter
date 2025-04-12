@@ -10,3 +10,5 @@ class Athlete(SqlAlchemyBase):
     birth_date = sa.Column(sa.Date, nullable=False)
     weight = sa.Column(sa.Float)
     league = sa.Column(sa.Integer)
+
+def add_athlete(name):
