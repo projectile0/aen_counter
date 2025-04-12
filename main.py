@@ -17,18 +17,18 @@ def index():
 def page_add_athlete():
     form = RegisterFormAthlete()
     if request.method == 'GET':
-        return render_template('page_add_athlete.html', form=form)
+        return render_template('page_form.html', form=form)
     else:
         if form.validate_on_submit():
             db_add_athlete(form)
             return redirect('/')
-        return render_template('page_add_athlete.html', form=form)
+        return render_template('page_form.html', form=form)
 
 @app.route('/reg_user', methods=['GET', 'POST'])
 def reg_athlete():
     form = RegisterFormUser()
     if request.method == 'GET':
-        return render_template('register_athlete.html', form=form)
+        return render_template('page_form.html', form=form)
     else:
         return 'success'
 
