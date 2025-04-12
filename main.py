@@ -13,15 +13,17 @@ login_manager = LoginManager()
 login_manager.login_view = 'login'
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
     return db_sess.query(User).get(user_id)
 
+
 @app.route('/')
 @app.route('/index')
 def index():
-    return render_template('base.html')
+    return render_template('base.html', title='Главная')
 
 
 @app.route('/add_athlete', methods=['GET', 'POST'])
@@ -31,16 +33,16 @@ def page_add_athlete():
     if form.validate_on_submit():
         db_add_athlete(form)
         return redirect('/')
-    return render_template('page_form.html', form=form)
+    return render_template('page_form.html', form=form, title='Добавить спортсмена')
 
 
 @app.route('/reg_user', methods=['GET', 'POST'])
-def reg_athlete():
+def reg_user():
     form = RegisterFormUser()
     if form.validate_on_submit():
         db_add_user(form)
         return redirect('/')
-    return render_template('page_form.html', form=form)
+    return render_template('page_form.html', form=form, title='Регистрация')
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -54,7 +56,7 @@ def login():
         if user and user.check_password(form.password.data):
             login_user(user, remember=form.remember_me.data)
             return redirect("/")
-    return render_template('page_form.html', form=form)
+    return render_template('page_form.html', form=form, title='Вход')
 
 
 @app.route('/logout')
@@ -63,9 +65,8 @@ def logout():
     logout_user()
     return redirect("/")
 
+
 def main():
-
-
     app.run(port=8080, debug=True)
 
 
