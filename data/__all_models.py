@@ -1,1 +1,1 @@
-from . import athletes, users
+from . import athletes, users, nominations, battles
