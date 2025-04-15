@@ -51,7 +51,7 @@ def nomination():
     if form.validate_on_submit():
         db_add_user(form)
         return redirect('/')
-    return render_template('nomination.html', form=form, title='Регистрация')
+    return render_template('nominat.html', form=form, title='Регистрация')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
