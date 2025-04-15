@@ -45,6 +45,14 @@ def reg_user():
     return render_template('page_form.html', form=form, title='Регистрация')
 
 
+@app.route('/nomination', methods=['GET', 'POST'])
+def nomination():
+    form = RegisterFormUser()
+    if form.validate_on_submit():
+        db_add_user(form)
+        return redirect('/')
+    return render_template('nomination.html', form=form, title='Регистрация')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
