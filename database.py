@@ -1,5 +1,6 @@
 from data.athletes import Athlete
 from data.db_session import create_session
+from data.nominations import Nomination
 from data.users import User
 
 from forms import RegisterFormAthlete, RegisterFormUser
@@ -24,3 +25,7 @@ def db_add_athlete(form: RegisterFormAthlete):  # Принимает RegisterFor
     athlete.league = form.league.data
     db_sess.add(athlete)
     db_sess.commit()
+
+def db_add_nomination(form):
+    db_sess = create_session()
+    nomination = Nomination()
