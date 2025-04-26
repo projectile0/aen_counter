@@ -55,11 +55,9 @@ def nomination():
 
 @app.route('/athlets', methods=['GET', 'POST'])
 def athlets():
-    form = RegisterFormUser()
-    if form.validate_on_submit():
-        db_add_user(form)
-        return redirect('/')
-    return render_template('list_athlets.html', form=form, title='Атлеты')
+    db_sess = db_session.create_session()
+    athletes = db_sess.query(Athlete).all()
+    return render_template('list_athlets.html', athletes=athletes, title='Атлеты')
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

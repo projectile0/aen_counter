@@ -1,5 +1,65 @@
-{% extends 'base.html' %}
+{% extends "base.html" %}
 
 {% block content %}
-Тут будут все атлеты
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Список атлетов</h1>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Атлеты</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col" class="text-nowrap">Имя</th>
+                        <th scope="col" class="text-nowrap">Фамилия</th>
+                        <th scope="col" class="text-nowrap">Дата рождения</th>
+                        <th scope="col" class="text-nowrap">Вес</th>
+                        <th scope="col" class="text-nowrap">Лига</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for athlete in athletes %}
+                    <tr>
+                        <td>{{ athlete.name }}</td>
+                        <td>{{ athlete.surname }}</td>
+                        <td>{{ athlete.birth_date.strftime('%d.%m.%Y') }}</td>
+                        <td>{{ athlete.weight }} кг</td>
+                        <td>
+                            <span>
+                                {% if athlete.league == 0 %}А
+                                {% elif athlete.league == 1 %}Б
+                                {% elif athlete.league == 2 %}C
+                                {% elif athlete.league == 3 %}О
+                                {% endif %}
+                            </span>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<style>
+    .table th {
+        font-weight: 600;
+    }
+    .table td, .table th {
+        vertical-align: middle;
+    }
+    .card {
+        border-radius: 0.5rem;
+        overflow: hidden;
+    }
+    .badge {
+        font-size: 0.9em;
+        padding: 0.5em 0.75em;
+        min-width: 2em;
+        display: inline-block;
+        text-align: center;
+    }
+</style>
 {% endblock %}
