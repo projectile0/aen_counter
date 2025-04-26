@@ -32,8 +32,9 @@
                     <a class="nav-link" href="/add_athlete">Добавить атлета</a>
                 </li>
             </ul>
-            <div class="d-flex gap-2">
+            <div class="d-flex gap-2 align-items-center">
                 {% if current_user.is_authenticated %}
+                    <span class="text-light me-2">{{ current_user.username }}</span>
                     <a href="/logout" class="btn btn-outline-light">Выйти</a>
                 {% else %}
                     <a href="/login" class="btn btn-outline-light">Войти</a>
