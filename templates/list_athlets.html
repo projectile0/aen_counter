@@ -6,17 +6,70 @@
 
     <div class="card shadow-sm">
         <div class="card-header bg-primary text-white">
-            <h5 class="mb-0">Атлеты</h5>
+            <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">Атлеты</h5>
+                <div class="dropdown">
+                    <button class="btn btn-sm btn-outline-light dropdown-toggle" type="button" id="sortDropdown"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                        Фильтр
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="sortDropdown">
+                        <li><h6 class="dropdown-header">По фамилии</h6></li>
+                        <li><a class="dropdown-item" href="?sort=surname&order=asc">А → Я</a></li>
+                        <li><a class="dropdown-item" href="?sort=surname&order=desc">Я → А</a></li>
+
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">По весу</h6></li>
+                        <li><a class="dropdown-item" href="?sort=weight&order=asc">По возрастанию</a></li>
+                        <li><a class="dropdown-item" href="?sort=weight&order=desc">По убыванию</a></li>
+
+                        <li><hr class="dropdown-divider"></li>
+                        <li><h6 class="dropdown-header">По лиге</h6></li>
+                        <li><a class="dropdown-item" href="?sort=league&order=asc">А → О</a></li>
+                        <li><a class="dropdown-item" href="?sort=league&order=desc">О → А</a></li>
+
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="?sort=none">Сбросить сортировку</a></li>
+                    </ul>
+                </div>
+            </div>
         </div>
         <div class="table-responsive">
             <table class="table table-hover mb-0">
                 <thead class="thead-light">
                     <tr>
                         <th scope="col" class="text-nowrap">Имя</th>
-                        <th scope="col" class="text-nowrap">Фамилия</th>
+                        <th scope="col" class="text-nowrap">
+                            Фамилия
+                            {% if request.args.get('sort') == 'surname' %}
+                                {% if request.args.get('order') == 'asc' %}
+                                    <i class="bi bi-arrow-up"></i>
+                                {% else %}
+                                    <i class="bi bi-arrow-down"></i>
+                                {% endif %}
+                            {% endif %}
+                        </th>
                         <th scope="col" class="text-nowrap">Дата рождения</th>
-                        <th scope="col" class="text-nowrap">Вес</th>
-                        <th scope="col" class="text-nowrap">Лига</th>
+                        <th scope="col" class="text-nowrap">
+                            Вес
+                            {% if request.args.get('sort') == 'weight' %}
+                                {% if request.args.get('order') == 'asc' %}
+                                    <i class="bi bi-arrow-up"></i>
+                                {% else %}
+                                    <i class="bi bi-arrow-down"></i>
+                                {% endif %}
+                            {% endif %}
+                        </th>
+                        <th scope="col" class="text-nowrap">
+                            Лига
+                            {% if request.args.get('sort') == 'league' %}
+                                {% if request.args.get('order') == 'asc' %}
+                                    <i class="bi bi-arrow-up"></i>
+                                {% else %}
+                                    <i class="bi bi-arrow-down"></i>
+                                {% endif %}
+                            {% endif %}
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,7 +80,12 @@
                         <td>{{ athlete.birth_date.strftime('%d.%m.%Y') }}</td>
                         <td>{{ athlete.weight }} кг</td>
                         <td>
-                            <span>
+                            <span class="badge
+                                {% if athlete.league == 0 %}
+                                {% elif athlete.league == 1 %}
+                                {% elif athlete.league == 2 %}
+                                {% elif athlete.league == 3 %}
+                                {% endif %}">
                                 {% if athlete.league == 0 %}А
                                 {% elif athlete.league == 1 %}Б
                                 {% elif athlete.league == 2 %}C
@@ -42,24 +100,4 @@
         </div>
     </div>
 </div>
-
-<style>
-    .table th {
-        font-weight: 600;
-    }
-    .table td, .table th {
-        vertical-align: middle;
-    }
-    .card {
-        border-radius: 0.5rem;
-        overflow: hidden;
-    }
-    .badge {
-        font-size: 0.9em;
-        padding: 0.5em 0.75em;
-        min-width: 2em;
-        display: inline-block;
-        text-align: center;
-    }
-</style>
 {% endblock %}

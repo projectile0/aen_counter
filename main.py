@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect
+from flask import Flask, render_template, redirect, request
 from flask_login import LoginManager, login_required, login_user, logout_user, current_user
 
 from data import db_session
@@ -53,11 +53,35 @@ def nomination():
         return redirect('/')
     return render_template('nominat.html', form=form, title='Номинации')
 
-@app.route('/athlets', methods=['GET', 'POST'])
+
+@app.route('/athlets')
 def athlets():
     db_sess = db_session.create_session()
-    athletes = db_sess.query(Athlete).all()
+
+    sort_by = request.args.get('sort')
+    sort_order = request.args.get('order')
+
+    query = db_sess.query(Athlete)
+
+    if sort_by == 'surname':
+        if sort_order == 'asc':
+            query = query.order_by(Athlete.surname.asc())
+        else:
+            query = query.order_by(Athlete.surname.desc())
+    elif sort_by == 'weight':
+        if sort_order == 'asc':
+            query = query.order_by(Athlete.weight.asc())
+        else:
+            query = query.order_by(Athlete.weight.desc())
+    elif sort_by == 'league':
+        if sort_order == 'asc':
+            query = query.order_by(Athlete.league.asc())
+        else:
+            query = query.order_by(Athlete.league.desc())
+
+    athletes = query.all()
     return render_template('list_athlets.html', athletes=athletes, title='Атлеты')
+
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
