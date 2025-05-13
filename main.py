@@ -3,7 +3,7 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 
 from data import db_session
 from database import *
-from forms import LoginForm
+from forms import LoginForm, NominationForm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
@@ -58,6 +58,12 @@ def login():
             return redirect("/")
     return render_template('page_form.html', form=form, title='Вход')
 
+
+@app.route('/add_nomination', methods=['GET', 'POST'])
+@login_required
+def add_nomination():
+    form = NominationForm()
+    return render_template('page_form.html', form=form, title='Добавить номинацию')
 
 @app.route('/logout')
 @login_required
