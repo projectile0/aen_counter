@@ -4,6 +4,11 @@ from flask_login import LoginManager, login_required, login_user, logout_user, c
 from data import db_session
 from database import *
 from forms import LoginForm
+from forms import AddBattleForm
+from database import db_add_battle
+from data.battles import Battle
+from data.athletes import Athlete
+from sqlalchemy import orm
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'AKFJDPOQWEXOFIJC_SDJKQ'
@@ -46,15 +51,34 @@ def reg_user():
 
 
 @app.route('/nomination', methods=['GET', 'POST'])
+@login_required
 def nomination():
-    form = RegisterFormUser()
+    db_sess = db_session.create_session()
+    athletes = db_sess.query(Athlete).all()
+
+    form = AddBattleForm()
+    form.athlete_1.choices = [(a.id, f"{a.surname} {a.name}") for a in athletes]
+    form.athlete_2.choices = [(a.id, f"{a.surname} {a.name}") for a in athletes]
+
     if form.validate_on_submit():
-        db_add_user(form)
-        return redirect('/')
-    return render_template('nominat.html', form=form, title='Номинации')
+        db_add_battle(
+            form.athlete_1.data,
+            form.athlete_2.data,
+            form.score_1.data,
+            form.score_2.data
+        )
+        return redirect('/nomination')
+
+    battles = db_sess.query(Battle).options(
+        orm.joinedload(Battle.athlete1),
+        orm.joinedload(Battle.athlete2)
+    ).all()
+
+    return render_template('nominat.html', form=form, battles=battles, title='Номинации')
 
 
 @app.route('/athlets')
+@login_required
 def athlets():
     db_sess = db_session.create_session()
 

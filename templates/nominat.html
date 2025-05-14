@@ -1,5 +1,76 @@
 {% extends 'base.html' %}
 
 {% block content %}
-Тут будут номинации
+<div class="container mt-4">
+    <h1 class="text-center mb-4">Номинации и бои</h1>
+
+    <div class="card shadow-sm mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Добавить новый бой</h5>
+        </div>
+        <div class="card-body">
+            <form method="post">
+                {{ form.hidden_tag() }}
+                <div class="row">
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            {{ form.athlete_1.label(class="form-label") }}
+                            {{ form.athlete_1(class="form-select") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.score_1.label(class="form-label") }}
+                            {{ form.score_1(class="form-control") }}
+                        </div>
+                    </div>
+                    <div class="col-md-2 d-flex align-items-center justify-content-center">
+                        <h3 class="text-center">VS</h3>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="mb-3">
+                            {{ form.athlete_2.label(class="form-label") }}
+                            {{ form.athlete_2(class="form-select") }}
+                        </div>
+                        <div class="mb-3">
+                            {{ form.score_2.label(class="form-label") }}
+                            {{ form.score_2(class="form-control") }}
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                    {{ form.submit(class="btn btn-primary") }}
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="card shadow-sm">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">Список боев</h5>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-hover mb-0">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Атлет 1</th>
+                        <th scope="col">Счет</th>
+                        <th scope="col">Атлет 2</th>
+                        <th scope="col">Счет</th>
+                        <th scope="col">Дата</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for battle in battles %}
+                    <tr>
+                        <td>{{ battle.athlete1.surname }} {{ battle.athlete1.name }}</td>
+                        <td>{{ battle.score_1 }}</td>
+                        <td>{{ battle.athlete2.surname }} {{ battle.athlete2.name }}</td>
+                        <td>{{ battle.score_2 }}</td>
+                        <td>{{ battle.time.strftime('%d.%m.%Y %H:%M') }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
 {% endblock %}
