@@ -75,6 +75,7 @@
                 <tbody>
                     {% for athlete in athletes %}
                     <tr>
+                        <td>{{ athlete.id }}</td>
                         <td>{{ athlete.name }}</td>
                         <td>{{ athlete.surname }}</td>
                         <td>{{ athlete.birth_date.strftime('%d.%m.%Y') }}</td>
